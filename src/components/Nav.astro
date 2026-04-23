@@ -1,0 +1,93 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' || pathname === '/index' : pathname.startsWith(href);
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/menu', label: 'Menu' },
+  { href: '/about', label: 'About' },
+  { href: '/reservations', label: 'Reservations' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<nav class="nav" id="main-nav">
+  <a href="/" class="nav-logo">
+    <span class="mark">스시</span>
+    <span class="name">Sushi Kim <span class="num">2</span></span>
+  </a>
+
+  <div class="nav-links">
+    {links.map(l => (
+      <a href={l.href} class={isActive(l.href) ? 'active' : ''}>{l.label}</a>
+    ))}
+  </div>
+
+  <button class="nav-menu-btn" id="nav-open" aria-label="Open navigation" aria-expanded="false">
+    <span class="lines">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    Menu
+  </button>
+
+  <a
+    href="https://order.toasttab.com/online/sushi-kim-2"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="nav-cta"
+  >Order Online</a>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <a href="/" class="nav-logo">
+      <span class="mark">스시</span>
+      <span class="name">Sushi Kim <span class="num">2</span></span>
+    </a>
+    <button id="nav-close" aria-label="Close navigation" style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;cursor:pointer;">
+      ✕ Close
+    </button>
+  </div>
+  <nav class="mobile-menu-links" aria-label="Mobile navigation">
+    {links.map(l => (
+      <a href={l.href} class={isActive(l.href) ? 'active' : ''}>{l.label}</a>
+    ))}
+  </nav>
+</div>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openBtn = document.getElementById('nav-open');
+  const closeBtn = document.getElementById('nav-close');
+
+  // Scroll detection
+  function onScroll() {
+    nav?.classList.toggle('scrolled', window.scrollY > 40);
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu
+  function openMenu() {
+    mobileMenu?.classList.add('open');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    openBtn?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu?.classList.remove('open');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    openBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  openBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+
+  // Close on nav link click
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>

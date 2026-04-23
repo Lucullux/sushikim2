@@ -1,0 +1,633 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface MenuItem {
+  en: string;
+  code?: string;
+  subtitle?: string;
+  description?: string;
+  tags: string[];
+  outOfStock?: boolean;
+}
+
+interface Category {
+  id: string;
+  label: string;
+  ko: string;
+  blurb: string;
+  items: MenuItem[];
+}
+
+const categories: Category[] = [
+  {
+    id: 'featured',
+    label: 'Featured',
+    ko: '추천',
+    blurb: "The dishes our regulars order by name. Start here if it's your first visit.",
+    items: [
+      { en: 'Chicken Bulgogi', code: 'D3', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
+      { en: 'Shumai', code: 'A5', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
+    ],
+  },
+  {
+    id: 'kfc',
+    label: 'Korean Fried Chicken',
+    ko: '치킨',
+    blurb: 'Crispy, seasoned, and made to share.',
+    items: [
+      { en: '6pc Chicken Wings', tags: [] },
+      { en: '12pc Chicken Wings', tags: [] },
+      { en: '18pc Chicken Wings', tags: [] },
+      { en: 'French Fries', tags: ['vegetarian'] },
+    ],
+  },
+  {
+    id: 'appetizers',
+    label: 'Appetizers',
+    ko: '에피타이저',
+    blurb: 'Small plates, big flavors — several are meals unto themselves.',
+    items: [
+      { en: 'Sashimi', code: 'A1', description: '16pc of raw fish combination.', tags: [] },
+      { en: 'Sushi App', code: 'A2', description: '6pc of sushi combination.', tags: [] },
+      { en: 'Janguh Gui', code: 'A3', description: 'Broiled freshwater eel with sauce.', tags: [] },
+      { en: 'Gyoza', code: 'A4', description: '4pc of beef dumplings.', tags: [] },
+      { en: 'Shumai', code: 'A5', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
+      { en: 'Saengsun Jeon', code: 'A6', description: '6pc of pan-fried cod fillet coated in egg batter.', tags: [] },
+      { en: 'Dumpling Soup', code: 'A7', description: 'Beef dumpling with homemade beef soup.', tags: [] },
+      { en: 'Edamame', code: 'A8', description: 'Steamed young soybean.', tags: ['vegetarian'] },
+      { en: 'Oshinko', code: 'A9', description: 'Pickled radish.', tags: ['vegetarian'] },
+      { en: 'Octopus Salad', code: 'A10', description: 'Octopus with mixed vegetable and light dressing.', tags: [] },
+      { en: 'Seaweed Salad', code: 'A11', description: 'Angel-hair threads of seaweed, tangled with sesame seed and a light sesame dressing.', tags: ['vegetarian'] },
+      { en: 'Vegetable Salad', code: 'A12', description: 'Mixed green vegetables with house dressing.', tags: ['vegetarian'] },
+      { en: 'Ebi Su', code: 'A13', description: 'Shrimp with vinegar-based sauce.', tags: [] },
+      { en: 'Tako Su', code: 'A14', description: 'Octopus with vinegar based sauce.', tags: [] },
+      { en: 'Sunomono', code: 'A15', description: 'Shrimp, octopus, clam with vinegar based sauce.', tags: [] },
+      { en: 'Pajeon', code: 'A16', description: 'Savory Korean-style pancake loaded with scallions and vegetables, pan-fried until golden.', tags: [] },
+      { en: 'Steamed Rice', tags: ['vegetarian'] },
+      { en: 'Miso Soup', tags: [] },
+      { en: 'Sushi Rice', tags: ['vegetarian'] },
+      { en: 'Extra Side Dish', tags: [] },
+    ],
+  },
+  {
+    id: 'soups',
+    label: 'Soups & Bowls',
+    ko: '찌개 · 탕',
+    blurb: 'Restorative bowls simmered low and slow. Order with steamed rice — they belong together.',
+    items: [
+      { en: 'Galbi Tang', code: 'T1', description: 'Beef short rib soup simmered with radish, onions, and glass noodles in a clear, savory broth.', tags: ['signature'] },
+      { en: 'Dduk Mandu Guk', code: 'T2', description: 'A comforting soup of sliced rice cakes and beef dumplings in a light, flavorful broth.', tags: [] },
+      { en: 'Yookgaejang', code: 'T3', description: 'Spicy shredded beef soup with scallions, mushrooms, and glass noodles in a rich red chili broth.', tags: ['spicy'] },
+      { en: 'Kimchi Jjigae', code: 'T4', description: 'Aged kimchi stew simmered with pork, tofu, and vegetables — bold, spicy, and deeply flavorful.', tags: ['spicy', 'signature'] },
+      { en: 'Soondubu', code: 'T5', description: 'Soft tofu stew with vegetables and your choice of seafood or meat, served bubbling hot in a spicy broth.', tags: ['spicy'] },
+      { en: 'Daegu Maeuntang', code: 'T6', description: 'Spicy pollack stew with radish, tofu, and vegetables in a fiery red broth.', tags: ['spicy'] },
+      { en: 'Vegetable Maeuntang', code: 'T7', description: 'A spicy, plant-based stew with tofu and seasonal vegetables in a rich chili broth.', tags: ['spicy', 'vegetarian'] },
+      { en: 'Doenjang Jjigae', code: 'T8', description: 'A savory soybean paste stew with tofu, zucchini, and mushrooms.', tags: [] },
+      { en: 'Sukuh Jjigae', code: 'T9', description: 'A comforting soup packed with cod, clams, mussels, scallops, squid, shrimp, and octopus, simmered with mixed veggies in a rich, spicy savory broth.', tags: ['spicy'] },
+    ],
+  },
+  {
+    id: 'entrees',
+    label: 'Entrees',
+    ko: '메인',
+    blurb: "Kim family recipes served the same way they've been served for 25 years.",
+    items: [
+      { en: 'Beef Bulgogi', code: 'D1', description: 'Thinly sliced beef marinated in a sweet and savory soy-based sauce, grilled to perfection with onions and scallions.', tags: ['signature'] },
+      { en: 'Galbi Gui', code: 'D2', description: 'Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled for a smoky, caramelized finish.', tags: ['signature'] },
+      { en: 'Chicken Bulgogi', code: 'D3', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
+      { en: 'Pork Bulgogi', code: 'D4', description: 'Spicy marinated pork stir-fried with onions for a bold, flavorful bite.', tags: ['spicy'] },
+      { en: 'Kimchi Jaeyook', code: 'D5', description: 'Spicy stir-fried pork cooked with aged kimchi for a tangy, fiery combo packed with flavors.', tags: ['spicy'] },
+      { en: 'Japchae', code: 'D6', description: 'Glass noodles stir-fried with beef and mixed vegetables in a light soy-garlic sauce. A sweet and savory Korean favorite.', tags: ['vegetarian'] },
+      { en: 'Teriyaki', code: 'D7', description: 'Grilled protein glazed in classic teriyaki sauce, served with veggies and rice.', tags: [] },
+      { en: 'Saengsun Jeon', code: 'D8', description: 'Lightly pan-fried fish fillets dipped in egg batter, crispy on the outside, tender and savory inside.', tags: [] },
+      { en: 'Hwe Muchim', code: 'D9', description: 'Spicy Korean-style sashimi salad — sliced raw fish mixed with vegetables in a tangy, spicy chili sauce.', tags: ['spicy'] },
+      { en: 'Fried Rice', code: 'D10', description: 'Fried rice with egg, vegetables, and your choice of beef, chicken, shrimp, or vegetables.', tags: [] },
+      { en: 'Ojinguh Bokkeum', code: 'D11', description: 'Stir-fried squid with vegetables in a spicy sauce — fiery, tender, and full of flavor.', tags: ['spicy'] },
+      { en: 'Bibimbap', code: 'D12', description: 'A colorful rice bowl topped with assorted veggies, beef, and a fried egg, served with gochujang sauce on the side.', tags: ['vegetarian-option'] },
+      { en: 'Mandu Gui', code: 'D14', description: 'Pan-fried Korean dumplings filled with seasoned beef and vegetables, crispy on the outside, juicy inside.', tags: [] },
+      { en: 'Janguh Dupbap', code: 'D15', description: 'Grilled freshwater eel glazed in sweet soy sauce, served over warm rice with veggies.', tags: [] },
+      { en: 'Hwe Dupbap', code: 'D16', description: 'Fresh assorted sashimi over rice, topped with vegetables and a spicy gochujang vinaigrette.', tags: ['spicy'] },
+    ],
+  },
+  {
+    id: 'sushi-combos',
+    label: 'Sushi Combos',
+    ko: '스시 세트',
+    blurb: "Hand-cut by our sushi chefs every morning. Today's catch is on the board at the bar.",
+    items: [
+      { en: '12 Piece Sushi Platter', description: "A chef's selection of 12 pieces of assorted sushi, featuring fresh cuts over seasoned rice.", tags: ['signature'] },
+      { en: '24 Piece Sushi Platter', description: 'A larger variety of 24 assorted sushi pieces, perfect for sharing or satisfying bigger appetites.', tags: ['signature'] },
+      { en: 'Chirashi', description: "A chef's daily assortment of fresh sashimi over sushi rice.", tags: [] },
+      { en: 'Chirashi B', description: "Chef's selection of fresh fish and shellfish over sushi rice.", tags: [] },
+      { en: "Kim's Favorite Roll", description: 'Blend of fresh tuna, yellowtail, salmon, and broiled eel, rolled with seasoned rice and nori for a balanced and flavorful experience. (16pc)', tags: ['signature'] },
+      { en: "Kim's Spicy Roll", description: 'A vibrant blend of tuna, yellowtail, crab, and salmon, rolled with seasoned rice and nori, with a spicy sauce for a flavorful kick.', tags: ['signature', 'spicy'] },
+      { en: 'Sashimi Platter', description: 'An assortment of fresh, sliced raw fish — no rice, just pure sashimi, beautifully presented.', tags: [] },
+      { en: 'Sushi Sashimi Platter', description: 'A balanced combination of fresh sushi and sliced sashimi, served with rice and garnishes.', tags: [] },
+    ],
+  },
+  {
+    id: 'special-rolls',
+    label: 'Special Rolls',
+    ko: '스페셜 롤',
+    blurb: 'Signature creations from our sushi bar — each one a Downtown Pittsburgh original.',
+    items: [
+      { en: 'After Dead Roll', description: 'Kani, tobiko, and cucumber wrapped tight, then hit with a fiery sauce. Bold, clean crunch meets pure heat. Handle with caution.', tags: ['spicy', 'signature'] },
+      { en: 'Downtown Roll', description: 'Half soft shell crab, half shrimp tempura, fully bold. With cucumber and mayo for a creamy crunch, this roll brings the best of both worlds.', tags: ['signature'] },
+      { en: 'Dragon Roll', tags: [] },
+      { en: 'Dynamite Roll', description: 'Kani, tobiko, and cucumber with homemade spicy sauce (8pc).', tags: ['spicy'] },
+      { en: 'Futomaki Roll', description: 'A classic jumbo roll packed with tamago, kani, cucumber, pickled radish, and spinach. Colorful, balanced, and satisfyingly bold in every bite.', tags: [] },
+      { en: 'Rainbow Roll', description: 'A California roll base topped with vibrant slices of tuna, salmon, and other fresh fish. A colorful mix of flavor, texture, and freshness.', tags: [] },
+    ],
+  },
+  {
+    id: 'rolls',
+    label: 'Rolls',
+    ko: '롤',
+    blurb: "Classic maki, made fresh. Ask your server about today's specials.",
+    items: [
+      { en: 'Avocado Roll', description: 'Creamy avocado slices wrapped in sushi rice and nori, offering a smooth and mild taste.', tags: ['vegetarian'] },
+      { en: 'BBQ Scallop Roll', description: 'Grilled scallops glazed with a sweet sauce, paired with cucumber, wrapped in rice and nori.', tags: [] },
+      { en: 'BBQ Yellowtail Roll', description: 'Grilled yellowtail with a smoky flavor, complemented by cucumber and wrapped in sushi rice and nori.', tags: [] },
+      { en: 'Bulgogi Roll', description: 'Marinated Korean-style grilled beef with pickled radish, wrapped in sushi rice and nori, blending savory and sweet flavors.', tags: [] },
+      { en: 'California Roll', description: 'A popular inside-out roll with imitation crab and cucumber, topped with sesame seeds and tobiko.', tags: [] },
+      { en: 'Cucumber Roll', description: 'Fresh cucumber strips rolled in rice and nori, providing a crisp and refreshing bite.', tags: ['vegetarian'] },
+      { en: 'Eel Roll', description: 'Grilled freshwater eel glazed with sweet soy-based sauce, combined with cucumber and wrapped in rice and nori.', tags: [] },
+      { en: 'Fried Tofu Roll', description: 'Sweet and savory fried tofu paired with sushi rice, wrapped in nori for a vegetarian option.', tags: ['vegetarian'] },
+      { en: 'Philadelphia Roll', description: 'Smoked salmon, cream cheese, and cucumber rolled together for a rich and creamy flavor profile.', tags: [] },
+      { en: 'Pickled Radish Roll', description: 'Tangy and crunchy pickled daikon radish wrapped in rice and nori, offering a vibrant flavor.', tags: ['vegetarian'] },
+      { en: 'Red Snapper Roll', description: 'Delicate red snapper wrapped in rice and nori for a light, clean flavor.', tags: [] },
+      { en: 'Salmon Roll', description: 'Fresh salmon rolled in sushi rice and nori, offering a rich and refreshing flavor.', tags: [] },
+      { en: 'Salmon Skin Roll', description: 'Crispy grilled salmon skin paired with cucumber, offering a smoky and savory flavor.', tags: [] },
+      { en: 'Scallop Roll', description: 'Sweet, tender scallops wrapped with sushi rice and nori, creating a delicate and slightly creamy bite.', tags: [] },
+      { en: 'Seaweed Salad Roll', description: 'Seasoned seaweed salad combined with sushi rice and nori, delivering a savory and slightly sweet taste.', tags: ['vegetarian'] },
+      { en: 'Shrimp Tempura Roll', description: 'Crispy shrimp tempura with mayo, cucumber, and tobiko, rolled in rice and nori, offering a delightful crunch.', tags: [] },
+      { en: 'Smoked Salmon Roll', description: 'Smoked salmon combined with cucumber, wrapped in rice and nori for a rich and creamy taste.', tags: [] },
+      { en: 'Tuna Roll', description: 'A classic hosomaki featuring lean, tender tuna wrapped in seasoned rice and nori.', tags: [] },
+      { en: 'Vegetable Combo Roll', description: 'A medley of fresh vegetables like spinach, cucumber, and carrots rolled together for a colorful and healthy option.', tags: ['vegetarian'] },
+      { en: 'White Tuna Roll', description: 'Mild and buttery white tuna (albacore) paired with seasoned rice and nori, offering a smooth texture and subtle taste.', tags: [] },
+      { en: 'Yellowtail Roll', description: 'Yellowtail delivering a buttery and mildly sweet taste.', tags: [] },
+    ],
+  },
+  {
+    id: 'alacarte',
+    label: 'À La Carte',
+    ko: '단품',
+    blurb: 'Individual nigiri and sashimi pieces. Two pieces per order unless noted.',
+    items: [
+      { en: 'Maguro', subtitle: 'Tuna', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Sake', subtitle: 'Salmon', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hamachi', subtitle: 'Yellowtail', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tai', subtitle: 'Red Snapper', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Unagi', subtitle: 'Eel', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Albacore', subtitle: 'White Tuna', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Saba', subtitle: 'Mackerel', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tako', subtitle: 'Octopus', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Ika', subtitle: 'Squid', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hotate Gai', subtitle: 'Scallop', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hokki Gai', subtitle: 'Artic Clam', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tobiko', subtitle: 'Flying Fish Roe', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Ebi', subtitle: 'Shrimp', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Smoked Salmon', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Kani', subtitle: 'Crab', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tamago', subtitle: 'Egg Omelette', description: 'A delicate, sweet Japanese rolled omelet layered atop vinegared rice and secured with a strip of nori, providing a light and satisfying taste.', tags: [] },
+      { en: 'Inari', subtitle: 'Fried Tofu', description: 'Sweet and savory sushi rice encased in a marinated deep-fried tofu pouch, offering a tender texture with a delightful balance of flavors.', tags: ['vegetarian'] },
+    ],
+  },
+  {
+    id: 'special-dishes',
+    label: 'Special Dishes',
+    ko: '스페셜',
+    blurb: 'Hot pot and braised dishes — perfect for the table to share.',
+    items: [
+      { en: 'Haemool Jeongol', code: 'J1', description: 'Seafood hot pot with shrimp, squid, mussels, and vegetables in a spicy broth, great for sharing.', tags: ['spicy'] },
+      { en: 'Bulnak Jeongol', code: 'J2', description: 'Spicy hot pot with marinated beef bulgogi and octopus, simmered with vegetables in a bold broth.', tags: ['spicy'] },
+      { en: 'Dakdori Tang', code: 'J3', description: 'Spicy braised chicken stew with potatoes, carrots, and onions in a rich red pepper sauce.', tags: ['spicy'] },
+    ],
+  },
+  {
+    id: 'beverages',
+    label: 'Beverages',
+    ko: '음료',
+    blurb: 'Soft drinks and sparkling ades.',
+    items: [
+      { en: 'Coca-Cola', description: 'Coca-Cola Original Taste, the crisp, refreshing taste you know and love.', tags: [] },
+      { en: 'Coca-Cola Zero Sugar', description: 'Great taste of Coca-Cola with zero sugar, zero calories.', tags: [] },
+      { en: 'Brisk', tags: [], outOfStock: true },
+      { en: 'Sprite', description: 'Classic, cool, crisp lemon-lime flavored taste that\'s caffeine free.', tags: [] },
+      { en: 'Perrier', tags: [] },
+      { en: 'Ginger Ale', tags: [] },
+      { en: 'Bottled Water', tags: [] },
+      { en: 'Sparkling Yuzu Ade', tags: [] },
+      { en: 'Sparkling Passion Fruit Ade', tags: [] },
+      { en: 'Sparkling Mango Ade', tags: [] },
+    ],
+  },
+];
+---
+
+<Layout title="Menu — Sushi Kim 2 · Downtown Pittsburgh">
+  <Nav />
+
+  <main class="page">
+
+    <!-- Header -->
+    <section class="px-pad" style="padding-top: 60px; padding-bottom: 40px;">
+      <div class="max-w-site mx-auto">
+        <p class="eyebrow" style="margin-bottom: 20px;">
+          The Menu
+        </p>
+        <div class="menu-header-grid">
+          <h1 class="display">
+            Korean soul food,<br/>
+            <span class="it">hand-cut sushi,</span><br/>
+            <span class="it">— with care.</span>
+          </h1>
+          <div>
+            <p class="body-lg" style="margin-bottom: 24px;">
+              Dishes marked
+              <span style="color: var(--red); font-family: var(--mono); font-size: 11px; padding: 2px 6px; border: 1px solid var(--red);">SIGNATURE</span>
+              are the ones we've been serving since we opened in 2001.
+            </p>
+            <div style="display: flex; gap: 16px; font-family: var(--mono); font-size: 11px; color: var(--ink-mute); flex-wrap: wrap;">
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <span style="width: 8px; height: 8px; background: var(--red); border-radius: 50%; display: inline-block; flex-shrink: 0;"></span> Spicy
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <span style="width: 8px; height: 8px; background: var(--gold); border-radius: 50%; display: inline-block; flex-shrink: 0;"></span> Vegetarian
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky tabs + search -->
+    <div id="menu-tabs-bar" style="
+      position: sticky; top: 72px; z-index: 20;
+      background: rgba(245,239,227,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 14px var(--pad);
+      margin-top: 32px;
+    ">
+      <div class="tabs-bar-inner max-w-site mx-auto">
+        <div class="search-wrap">
+          <span style="font-size: 14px; color: var(--ink-mute);">⌕</span>
+          <input
+            id="menu-search"
+            type="search"
+            placeholder="Search…"
+            style="border: none; background: transparent; outline: none; font-family: var(--sans); font-size: 13px; flex: 1; color: var(--ink); min-width: 0;"
+            aria-label="Search menu items"
+          />
+        </div>
+        <div class="tabs-scroll-wrap" id="tabs-scroll-wrap">
+          <div id="tab-btns">
+            {categories.map((cat, i) => (
+              <button class="tab-btn" data-tab={cat.id} aria-selected={i === 0 ? 'true' : 'false'}>
+                {cat.label}
+                <span class="tab-count">{String(cat.items.length).padStart(2, '0')}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu categories -->
+    <section class="px-pad" style="padding-top: 60px; padding-bottom: 80px;">
+      <div class="max-w-site mx-auto">
+
+        {categories.map((cat, i) => (
+          <div class="menu-category" data-category={cat.id} style={i > 0 ? 'display:none' : ''}>
+            <div class="menu-layout">
+
+              <!-- Sidebar -->
+              <aside class="menu-sidebar">
+                <div class="mono" style="color: var(--red); margin-bottom: 12px;">
+                  {String(i + 1).padStart(2, '0')} / {String(categories.length).padStart(2, '0')}
+                </div>
+                <h2 class="display" style="font-size: clamp(34px, 4vw, 52px); margin-bottom: 14px; line-height: 1.05;">
+                  {cat.label}
+                </h2>
+                <p class="body" style="max-width: 30ch;">{cat.blurb}</p>
+              </aside>
+
+              <!-- Items -->
+              <div class="menu-items-col">
+                {cat.items.map(item => (
+                  <article
+                    class="menu-item"
+                    data-name={(item.en + ' ' + (item.subtitle ?? '') + ' ' + (item.code ?? '') + ' ' + (item.description ?? '')).toLowerCase()}
+                    style={item.outOfStock ? 'opacity: 0.45;' : ''}
+                  >
+                    <div style="display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: item.description ? '6px' : '0';">
+                      {item.code && (
+                        <span class="item-code">{item.code}</span>
+                      )}
+                      <h3 class="item-name" style={item.outOfStock ? 'text-decoration: line-through;' : ''}>
+                        {item.en}
+                      </h3>
+                      {item.subtitle && (
+                        <span class="item-subtitle">{item.subtitle}</span>
+                      )}
+                      {item.outOfStock && (
+                        <span class="item-oos">Out of stock</span>
+                      )}
+                      {item.tags.includes('signature') && (
+                        <span class="tag-signature">Signature</span>
+                      )}
+                      {item.tags.includes('spicy') && (
+                        <span class="tag-dot" style="background: var(--red);" title="Spicy"></span>
+                      )}
+                      {item.tags.includes('vegetarian') && (
+                        <span class="tag-dot" style="background: var(--gold);" title="Vegetarian"></span>
+                      )}
+                    </div>
+                    {item.description && (
+                      <p class="item-desc">{item.description}</p>
+                    )}
+                  </article>
+                ))}
+                <p class="no-results" style="display: none; padding: 40px 0; font-family: var(--serif); font-style: italic; color: var(--ink-mute);">
+                  No items found for that search.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="border-top: 1px solid var(--line); padding: 80px var(--pad); background: var(--cream-deep);">
+      <div class="max-w-site mx-auto" style="text-align: center;">
+        <p class="eyebrow" style="margin-bottom: 20px;">Ready to eat?</p>
+        <h2 class="display" style="margin-bottom: 32px;">
+          Order online, or <span class="it">reserve a table.</span>
+        </h2>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://order.toasttab.com/online/sushi-kim-2" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Order Online <span class="arr">→</span>
+          </a>
+          <a href="/reservations" class="btn btn-ghost">Reserve a Table</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const menuCategories = document.querySelectorAll<HTMLElement>('.menu-category');
+  const searchInput = document.getElementById('menu-search') as HTMLInputElement | null;
+
+  function activateTab(id: string) {
+    tabBtns.forEach(btn => {
+      btn.setAttribute('aria-selected', btn.dataset.tab === id ? 'true' : 'false');
+    });
+    menuCategories.forEach(cat => {
+      cat.style.display = cat.dataset.category === id ? '' : 'none';
+    });
+    if (searchInput) {
+      searchInput.value = '';
+      filterItems('');
+    }
+  }
+
+  function filterItems(query: string) {
+    const q = query.toLowerCase().trim();
+    const activeCategory = Array.from(menuCategories).find(
+      cat => cat.style.display !== 'none' && !cat.style.display.includes('none')
+    ) ?? menuCategories[0];
+
+    const items = activeCategory.querySelectorAll<HTMLElement>('.menu-item');
+    const noResults = activeCategory.querySelector<HTMLElement>('.no-results');
+    let visible = 0;
+
+    items.forEach(item => {
+      const name = item.dataset.name || '';
+      const match = !q || name.includes(q);
+      item.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    if (noResults) noResults.style.display = visible === 0 ? '' : 'none';
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.tab;
+      if (id) activateTab(id);
+    });
+  });
+
+  searchInput?.addEventListener('input', () => filterItems(searchInput.value));
+
+  /* Scroll indicators */
+  const tabsScrollWrap = document.getElementById('tabs-scroll-wrap');
+  const tabBtnsEl = document.getElementById('tab-btns');
+
+  function updateIndicators() {
+    if (!tabBtnsEl || !tabsScrollWrap) return;
+    const { scrollLeft, scrollWidth, clientWidth } = tabBtnsEl;
+    tabsScrollWrap.classList.toggle('show-left', scrollLeft > 4);
+    tabsScrollWrap.classList.toggle('show-right', scrollLeft < scrollWidth - clientWidth - 4);
+  }
+
+  tabBtnsEl?.addEventListener('scroll', updateIndicators, { passive: true });
+  window.addEventListener('resize', updateIndicators);
+  updateIndicators();
+</script>
+
+<style>
+  .menu-header-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  /* Tab bar layout */
+  .tabs-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+    background: var(--paper);
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .tabs-scroll-wrap {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+  .tabs-scroll-wrap::before,
+  .tabs-scroll-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .tabs-scroll-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(245,239,227,0.96) 40%, transparent);
+  }
+  .tabs-scroll-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(245,239,227,0.96) 40%, transparent);
+  }
+  .tabs-scroll-wrap.show-left::before { opacity: 1; }
+  .tabs-scroll-wrap.show-right::after { opacity: 1; }
+
+  #tab-btns {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  #tab-btns::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 768px) {
+    .tabs-bar-inner { flex-wrap: wrap; gap: 10px; }
+    .search-wrap { width: 100%; order: 0; min-width: 0; }
+    .tabs-scroll-wrap { width: 100%; order: 1; }
+  }
+
+  .tab-btn {
+    padding: 9px 15px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .tab-btn[aria-selected="true"] {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .tab-btn:hover:not([aria-selected="true"]) { border-color: var(--line); }
+  .tab-count { font-family: var(--mono); font-size: 10px; opacity: 0.5; }
+
+  /* Menu grid */
+  .menu-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 60px;
+  }
+  .menu-sidebar {
+    position: sticky;
+    top: 180px;
+    align-self: start;
+  }
+  .menu-items-col { min-width: 0; }
+
+  /* Item rows */
+  .menu-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .menu-item:first-child { border-top: 1px solid var(--line-soft); }
+
+  .item-code {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    padding-top: 6px;
+    flex-shrink: 0;
+  }
+  .item-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .item-subtitle {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-mute);
+    padding-top: 5px;
+  }
+  .item-desc {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    max-width: 58ch;
+  }
+  .item-oos {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border: 1px solid var(--line);
+    padding: 2px 6px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .tag-signature {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 2px 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .tag-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .menu-header-grid { grid-template-columns: 1fr; }
+    .menu-layout { grid-template-columns: 1fr; }
+    .menu-sidebar { position: static; margin-bottom: 32px; }
+  }
+</style>

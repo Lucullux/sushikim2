@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Reservations — Sushi Kim 2 · Downtown Pittsburgh">
+  <Nav />
+
+  <main class="page">
+
+    <section class="px-pad" style="padding-top: 60px; padding-bottom: 80px;">
+      <div class="max-w-site mx-auto">
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;">
+
+          <!-- Left: Intro -->
+          <div style="position: sticky; top: 110px;">
+            <p class="eyebrow" style="margin-bottom: 20px;">
+              Reservations <span class="dot"></span> 예약
+            </p>
+            <h1 class="display">
+              Reserve a table<br/>
+              <span class="it">at 110 Smithfield.</span>
+            </h1>
+            <p class="body-lg" style="margin-top: 28px; max-width: 42ch;">
+              Seating every fifteen minutes, lunch and dinner. Parties of six or more —
+              please call <a href="tel:4126001000" style="color: var(--red); text-decoration: underline;">412-600-1000</a>
+              so we can prepare the long table.
+            </p>
+
+            <div style="
+              margin-top: 40px; padding: 24px 0;
+              border-top: 1px solid var(--line);
+              border-bottom: 1px solid var(--line);
+              font-family: var(--mono); font-size: 12px;
+              line-height: 2.2; color: var(--ink-soft);
+            ">
+              <div style="color: var(--red); margin-bottom: 10px; letter-spacing: 0.15em;">SERVICE HOURS</div>
+              <div>LUNCH &nbsp;· TUE–SAT · 11:30 — 14:30</div>
+              <div>DINNER · TUE–SAT · 16:30 — 21:00</div>
+              <div>SUN &nbsp;&nbsp;· ALL DAY · 11:30 — 20:00</div>
+              <div style="opacity: 0.5;">MON &nbsp;&nbsp;· CLOSED</div>
+            </div>
+
+            <p class="small" style="margin-top: 24px; max-width: 36ch;">
+              Holding a table past 15 minutes requires us to call you — please keep your phone nearby.
+            </p>
+          </div>
+
+          <!-- Right: Form -->
+          <div style="background: var(--paper); border: 1px solid var(--line); padding: 40px;">
+
+            <form
+              id="reservation-form"
+              name="reservation"
+              method="POST"
+              action="/reservations/success"
+              novalidate
+            >
+              <!-- Date -->
+              <label class="field-label" for="res-date">Preferred date</label>
+              <input
+                id="res-date"
+                name="date"
+                type="date"
+                class="field-input"
+                required
+              />
+
+              <!-- Time -->
+              <label class="field-label" for="res-time">Preferred time</label>
+              <select
+                id="res-time"
+                name="time"
+                class="field-input"
+                required
+                style="cursor: pointer; appearance: auto;"
+              >
+                <option value="">Select a time…</option>
+                <optgroup label="Lunch (Tue–Sat)">
+                  <option>11:30</option>
+                  <option>11:45</option>
+                  <option>12:00</option>
+                  <option>12:15</option>
+                  <option>12:30</option>
+                  <option>12:45</option>
+                  <option>13:00</option>
+                  <option>13:15</option>
+                  <option>13:30</option>
+                  <option>14:00</option>
+                </optgroup>
+                <optgroup label="Dinner (Tue–Sat)">
+                  <option>16:30</option>
+                  <option>17:00</option>
+                  <option>17:30</option>
+                  <option>18:00</option>
+                  <option>18:30</option>
+                  <option>19:00</option>
+                  <option>19:30</option>
+                  <option>20:00</option>
+                  <option>20:30</option>
+                </optgroup>
+                <optgroup label="Sunday (all day)">
+                  <option>11:30</option>
+                  <option>12:00</option>
+                  <option>13:00</option>
+                  <option>14:00</option>
+                  <option>15:00</option>
+                  <option>16:00</option>
+                  <option>17:00</option>
+                  <option>18:00</option>
+                  <option>19:00</option>
+                </optgroup>
+              </select>
+
+              <!-- Party size -->
+              <label class="field-label">Party size</label>
+              <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 24px;">
+                {[1, 2, 3, 4, 5, 6].map(n => (
+                  <label style="cursor: pointer;">
+                    <input
+                      type="radio"
+                      name="party"
+                      value={String(n)}
+                      required
+                      style="position: absolute; opacity: 0; pointer-events: none;"
+                      class="party-radio"
+                    />
+                    <span class="party-option" style="
+                      display: flex; align-items: center; justify-content: center;
+                      padding: 18px 0;
+                      border: 1px solid var(--line);
+                      background: var(--cream);
+                      color: var(--ink);
+                      font-family: var(--serif); font-size: 24px;
+                      transition: all 0.15s;
+                      user-select: none;
+                    ">
+                      {n === 6 ? '6+' : n}
+                    </span>
+                  </label>
+                ))}
+              </div>
+
+              <!-- Name -->
+              <label class="field-label" for="res-name">Name</label>
+              <input id="res-name" name="name" type="text" class="field-input" placeholder="Your name" required />
+
+              <!-- Email -->
+              <label class="field-label" for="res-email">Email</label>
+              <input id="res-email" name="email" type="email" class="field-input" placeholder="you@email.com" required />
+
+              <!-- Phone -->
+              <label class="field-label" for="res-phone">Phone</label>
+              <input id="res-phone" name="phone" type="tel" class="field-input" placeholder="(412) 555-0100" required />
+
+              <!-- Occasion -->
+              <label class="field-label">Occasion (optional)</label>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px;" id="occasion-btns">
+                {['None', 'Birthday', 'Anniversary', 'Date night', 'Business'].map(occ => (
+                  <button
+                    type="button"
+                    class="occasion-btn"
+                    data-val={occ}
+                    style="
+                      padding: 8px 14px;
+                      border: 1px solid var(--line);
+                      background: transparent;
+                      color: var(--ink);
+                      font-size: 12px; letter-spacing: 0.08em;
+                      cursor: pointer; transition: all 0.15s;
+                    "
+                  >{occ}</button>
+                ))}
+                <input type="hidden" name="occasion" id="occasion-val" value="None" />
+              </div>
+
+              <!-- Notes -->
+              <label class="field-label" for="res-notes">Special requests (optional)</label>
+              <textarea
+                id="res-notes"
+                name="notes"
+                class="field-input"
+                placeholder="Allergies, seating preferences, etc."
+                rows="3"
+                style="resize: vertical;"
+              ></textarea>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Request Reservation <span class="arr">→</span>
+              </button>
+
+              <p class="small" style="margin-top: 16px; text-align: center;">
+                We'll confirm by email or phone within 2 hours.
+              </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Party size radio → visual toggle
+  document.querySelectorAll<HTMLInputElement>('.party-radio').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.party-option').forEach(span => {
+        const el = span as HTMLElement;
+        el.style.background = 'var(--cream)';
+        el.style.color = 'var(--ink)';
+        el.style.borderColor = 'var(--line)';
+      });
+      const label = radio.closest('label');
+      const span = label?.querySelector('.party-option') as HTMLElement | null;
+      if (span) {
+        span.style.background = 'var(--red)';
+        span.style.color = 'var(--cream)';
+        span.style.borderColor = 'var(--red)';
+      }
+    });
+  });
+
+  // Occasion buttons
+  const occBtns = document.querySelectorAll<HTMLButtonElement>('.occasion-btn');
+  const occInput = document.getElementById('occasion-val') as HTMLInputElement;
+  occBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      occBtns.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--ink)';
+        b.style.borderColor = 'var(--line)';
+      });
+      btn.style.background = 'var(--red)';
+      btn.style.color = 'var(--cream)';
+      btn.style.borderColor = 'var(--red)';
+      occInput.value = btn.dataset.val || '';
+    });
+  });
+
+  // Pre-select party of 2
+  const radio2 = document.querySelector<HTMLInputElement>('input[name="party"][value="2"]');
+  if (radio2) radio2.dispatchEvent(new Event('change'));
+  if (radio2) radio2.checked = true;
+
+  // Set min date to today
+  const dateInput = document.getElementById('res-date') as HTMLInputElement;
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  }
+</script>
+
+<style>
+  @media (max-width: 900px) {
+    div[style*="grid-template-columns: 1fr 1.2fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    div[style*="position: sticky; top: 110px"] {
+      position: static !important;
+    }
+  }
+</style>

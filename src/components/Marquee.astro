@@ -1,0 +1,18 @@
+---
+export interface Props {
+  items: string[];
+  accent?: string;
+}
+
+const { items, accent = '•' } = Astro.props;
+// Quadruple the items so the seamless loop works at all viewport widths
+const repeated = [...items, ...items, ...items, ...items];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {repeated.map(item => (
+      <span>{item} <span class="sep">{accent}</span></span>
+    ))}
+  </div>
+</div>

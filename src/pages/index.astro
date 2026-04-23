@@ -1,0 +1,341 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Marquee from '../components/Marquee.astro';
+---
+
+<Layout>
+  <Nav />
+
+  <main class="page">
+
+    <!-- ===== HERO: Editorial ===== -->
+    <section class="px-pad" style="padding-top: 80px; padding-bottom: 100px;">
+      <div class="max-w-site mx-auto">
+        <div class="hero-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: end;">
+
+          <div>
+            <p class="eyebrow" style="margin-bottom: 28px;">
+              Est. 2001 <span class="dot"></span> Pittsburgh's Korean Kitchen &amp; Sushi Bar
+            </p>
+            <h1 class="display">
+              Soulful<br/>
+              Korean <span class="it">cooking,</span><br/>
+              <span class="ko" style="color: var(--red);">정성껏</span><br/>
+              <span class="it">with care.</span>
+            </h1>
+            <p class="body-lg" style="margin-top: 32px; max-width: 46ch;">
+              Twenty-five years of slow-simmered stews, charcoal-kissed bulgogi,
+              and hand-cut sashimi at 110 Smithfield — a quiet downtown room where
+              Kim family recipes meet the day's catch.
+            </p>
+            <div style="display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap;">
+              <a href="/reservations" class="btn btn-primary">
+                Reserve a Table <span class="arr">→</span>
+              </a>
+              <a href="/menu" class="btn btn-ghost">
+                View the Menu
+              </a>
+            </div>
+            <div style="margin-top: 56px; display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line);">
+              <div>
+                <div style="font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--red); font-style: italic;">25</div>
+                <div class="small" style="margin-top: 6px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.12em;">Years in Pittsburgh</div>
+              </div>
+              <div>
+                <div style="font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--red); font-style: italic;">4.8</div>
+                <div class="small" style="margin-top: 6px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.12em;">★ Google, 200+ reviews</div>
+              </div>
+              <div>
+                <div style="font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--red); font-style: italic;">110</div>
+                <div class="small" style="margin-top: 6px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.12em;">Smithfield St, Downtown</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero image stack -->
+          <div style="position: relative; aspect-ratio: 3/4;">
+            <div style="position: absolute; inset: 0; overflow: hidden;">
+              <img src="/images/bulgogi.jpg" alt="Beef Bulgogi" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            </div>
+            <div style="
+              position: absolute; bottom: -40px; left: -48px;
+              width: 180px; height: 240px;
+              background: var(--cream-deep);
+              border: 6px solid var(--cream);
+              box-shadow: 0 20px 40px rgba(42,35,32,0.18);
+            "></div>
+            <div style="
+              position: absolute; top: 24px; right: -32px;
+              background: var(--paper);
+              padding: 16px 20px;
+              border: 1px solid var(--line);
+              box-shadow: 0 10px 30px rgba(42,35,32,0.08);
+              font-family: var(--mono); font-size: 11px;
+              line-height: 1.6;
+            ">
+              <div style="color: var(--red); font-weight: 600; letter-spacing: 0.1em;">TODAY'S CATCH</div>
+              <div style="color: var(--ink-soft); margin-top: 4px;">Bluefin · Hamachi</div>
+              <div style="color: var(--ink-soft);">Uni · Tai · Saba</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <Marquee items={[
+      'Authentic Korean Specialties',
+      'Premium Sushi & Sashimi',
+      'Since 2001',
+      'Downtown Pittsburgh',
+      'Korean Soul Food',
+    ]} />
+
+    <!-- ===== SIGNATURE DISHES ===== -->
+    <section class="px-pad" style="padding-top: 120px; padding-bottom: 120px;">
+      <div class="max-w-site mx-auto">
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px;">
+          <div>
+            <p class="eyebrow" style="margin-bottom: 20px;">
+              House Specialties
+            </p>
+            <h2 class="display">
+              Dishes we've <span class="it">perfected</span><br/>
+              over twenty-five years.
+            </h2>
+          </div>
+          <a href="/menu" class="btn btn-ghost">Full Menu <span class="arr">→</span></a>
+        </div>
+
+        <div class="dishes-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/bulgogi.jpg" alt="Beef Bulgogi" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">불고기</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">01</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Beef Bul Go Gi</h3>
+            <p class="body" style="font-size: 14px;">Sliced tender prime beef marinated in homemade Korean BBQ sauce, grilled to perfection.</p>
+          </article>
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/galbi.jpg" alt="Galbi Gui" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">갈비구이</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">02</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Gal Bi Gui</h3>
+            <p class="body" style="font-size: 14px;">Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled to a smoky, caramelized finish.</p>
+          </article>
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/korean-spread.jpg" alt="Bibimbap" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">비빔밥</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">03</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Bibimbap</h3>
+            <p class="body" style="font-size: 14px;">A vibrant Korean rice bowl topped with seasoned vegetables, beef, and a fried egg. Served with house gochujang.</p>
+          </article>
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/galbi-tang.jpg" alt="Galbi Tang" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">갈비탕</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">04</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Galbi Tang</h3>
+            <p class="body" style="font-size: 14px;">Beef short rib soup simmered with radish, onions, and glass noodles in a clear, deeply savory broth.</p>
+          </article>
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/sushi-hand.jpg" alt="Chef's Sushi Platter" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">스시</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">05</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Chef's Sushi Platter</h3>
+            <p class="body" style="font-size: 14px;">Chef's selection, hand-cut daily. Bluefin, hamachi, uni, saba. Served with miso soup.</p>
+          </article>
+
+          <article>
+            <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
+              <img src="/images/sashimi.jpg" alt="Sashimi" class="dish-img" />
+              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">사시미</div>
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">06</div>
+            </div>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Sashimi</h3>
+            <p class="body" style="font-size: 14px;">Today's catch, sliced to order. Served with wasabi, shiso, and pickled ginger.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STORY TEASER (dark) ===== -->
+    <section style="background: var(--ink); color: var(--cream); padding: 120px var(--pad);">
+      <div class="max-w-site mx-auto story-grid" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center;">
+
+        <div class="ph" style="
+          aspect-ratio: 4/5;
+          background:
+            linear-gradient(135deg, rgba(139,26,26,0.2), transparent),
+            repeating-linear-gradient(135deg, #3a322d 0 8px, #2f2924 8px 9px);
+          border: 1px solid rgba(245,239,227,0.12);
+        ">
+          <div style="
+            position: absolute; inset: 0; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; gap: 10px; color: var(--gold-soft);
+          ">
+            <div class="mono">FAMILY PORTRAIT · DROP IN</div>
+            <div class="mono" style="margin-top: 4px;">THE KIM FAMILY · 2001–PRESENT</div>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow" style="color: var(--gold-soft); margin-bottom: 24px;">
+            Our Story
+          </p>
+          <h2 class="display" style="color: var(--cream);">
+            A family recipe,<br/>
+            <span class="it" style="color: var(--gold-soft);">two generations</span><br/>
+            in downtown Pittsburgh.
+          </h2>
+          <p class="body-lg" style="color: rgba(245,239,227,0.75); margin-top: 28px; max-width: 50ch;">
+            The Kim family opened their first kitchen in 2001 with a handwritten menu
+            and a stone bibimbap bowl brought from Seoul. A quarter century later,
+            the bowl is still on the pass — and the recipes haven't changed.
+          </p>
+          <a href="/about" class="btn btn-outline-cream" style="margin-top: 36px;">
+            Read Our Story <span class="arr">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== REVIEWS ===== -->
+    <section class="px-pad" style="padding-top: 120px; padding-bottom: 120px;">
+      <div class="max-w-site mx-auto">
+
+        <div style="text-align: center; margin-bottom: 64px;">
+          <p class="eyebrow" style="margin-bottom: 20px;">What Pittsburgh Is Saying</p>
+          <h2 class="display" style="max-width: 18ch; margin: 0 auto;">
+            <span style="color: var(--red);">4.8 ★</span> across
+            <span class="it"> 200+ reviews.</span>
+          </h2>
+        </div>
+
+        <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+
+          <blockquote style="padding: 40px 32px; background: var(--paper); border: 1px solid var(--line);">
+            <div style="color: var(--red); font-size: 22px; margin-bottom: 16px;">★★★★★</div>
+            <p style="font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink); margin-bottom: 20px;">
+              "The galbi here is the best I've had outside of Seoul. A downtown Pittsburgh treasure."
+            </p>
+            <footer class="mono" style="color: var(--ink-mute);">— Michelle L. · Google</footer>
+          </blockquote>
+
+          <blockquote style="padding: 40px 32px; background: var(--paper); border: 1px solid var(--line);">
+            <div style="color: var(--red); font-size: 22px; margin-bottom: 16px;">★★★★★</div>
+            <p style="font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink); margin-bottom: 20px;">
+              "Twenty-five years strong for a reason. The Kim family cooks with love."
+            </p>
+            <footer class="mono" style="color: var(--ink-mute);">— David R. · Google</footer>
+          </blockquote>
+
+          <blockquote style="padding: 40px 32px; background: var(--paper); border: 1px solid var(--line);">
+            <div style="color: var(--red); font-size: 22px; margin-bottom: 16px;">★★★★★</div>
+            <p style="font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink); margin-bottom: 20px;">
+              "Sashimi is hand-cut and perfect. Banchan is generous and thoughtful."
+            </p>
+            <footer class="mono" style="color: var(--ink-mute);">— Priya S. · Yelp</footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VISIT CTA (red) ===== -->
+    <section style="padding: 120px var(--pad); background: var(--red); color: var(--cream);">
+      <div class="max-w-site mx-auto visit-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;">
+
+        <div>
+          <p class="eyebrow" style="color: var(--gold-soft); margin-bottom: 20px;">
+            Visit Us <span class="dot" style="background: var(--gold-soft);"></span>
+          </p>
+          <h2 class="display" style="color: var(--cream);">
+            110 Smithfield St.<br/>
+            <span class="it" style="color: var(--gold-soft);">Downtown.</span>
+          </h2>
+          <p class="body-lg" style="color: rgba(245,239,227,0.85); margin-top: 24px;">
+            A block from Market Square. Lunch service starts at 11:30.
+            Dinner 4:30 to 9. Closed Mondays.
+          </p>
+          <div style="display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap;">
+            <a href="/reservations" class="btn btn-outline-cream">
+              Reserve <span class="arr">→</span>
+            </a>
+            <a href="tel:4126001000" class="btn btn-cream-on-red">
+              Call 412-600-1000
+            </a>
+          </div>
+        </div>
+
+        <div style="
+          background: rgba(0,0,0,0.15);
+          border: 1px solid rgba(245,239,227,0.2);
+          padding: 32px;
+          font-family: var(--mono); font-size: 13px; line-height: 2.2;
+          color: var(--cream);
+        ">
+          <div style="color: var(--gold-soft); font-size: 10px; letter-spacing: 0.2em; margin-bottom: 14px;">HOURS</div>
+          <div>SUN &nbsp;&nbsp;&nbsp;&nbsp;11:30 — 20:00</div>
+          <div style="opacity: 0.45;">MON &nbsp;&nbsp;&nbsp;CLOSED</div>
+          <div>TUE–FRI &nbsp;11:30 — 14:30</div>
+          <div>TUE–FRI &nbsp;16:30 — 21:00</div>
+          <div>SAT &nbsp;&nbsp;&nbsp;&nbsp;11:30 — 21:00</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .dish-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .story-grid,
+    .visit-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .dishes-grid,
+    .reviews-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .dishes-grid,
+    .reviews-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

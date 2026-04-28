@@ -113,7 +113,7 @@ import Footer from '../components/Footer.astro';
             <!-- Quick message form -->
             <div style="background: var(--paper); border: 1px solid var(--line); padding: 36px;">
               <div class="mono" style="color: var(--red); margin-bottom: 20px;">SEND A MESSAGE</div>
-              <form name="contact" method="POST" action="/contact/success">
+              <form name="contact" method="POST" action="/contact/success" netlify>
                 <label class="field-label" for="contact-name">Name</label>
                 <input id="contact-name" name="name" type="text" class="field-input" placeholder="Your name" required />
 

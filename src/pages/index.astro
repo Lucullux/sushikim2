@@ -17,16 +17,16 @@ import Marquee from '../components/Marquee.astro';
 
           <div>
             <p class="eyebrow" style="margin-bottom: 28px;">
-              Est. 2001 <span class="dot"></span> Pittsburgh's Korean Kitchen &amp; Sushi Bar
+              Est. 1990 <span class="dot"></span> Pittsburgh's Korean Kitchen &amp; Sushi Bar
             </p>
             <h1 class="display">
               Soulful<br/>
               Korean <span class="it">cooking,</span><br/>
-              <span class="ko" style="color: var(--red);">정성껏</span><br/>
               <span class="it">with care.</span>
             </h1>
+            <p class="ko" style="color: var(--red); font-size: clamp(20px, 2.5vw, 32px); margin-top: 12px; letter-spacing: 0.04em;">정성껏</p>
             <p class="body-lg" style="margin-top: 32px; max-width: 46ch;">
-              Twenty-five years of slow-simmered stews, charcoal-kissed bulgogi,
+              30+ years of slow-simmered stews, charcoal-kissed bulgogi,
               and hand-cut sashimi at 110 Smithfield — a quiet downtown room where
               Kim family recipes meet the day's catch.
             </p>
@@ -40,7 +40,7 @@ import Marquee from '../components/Marquee.astro';
             </div>
             <div style="margin-top: 56px; display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line);">
               <div>
-                <div style="font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--red); font-style: italic;">25</div>
+                <div style="font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--red); font-style: italic;">30+</div>
                 <div class="small" style="margin-top: 6px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.12em;">Years in Pittsburgh</div>
               </div>
               <div>
@@ -89,7 +89,7 @@ import Marquee from '../components/Marquee.astro';
     <Marquee items={[
       'Authentic Korean Specialties',
       'Premium Sushi & Sashimi',
-      'Since 2001',
+      'Since 1990',
       'Downtown Pittsburgh',
       'Korean Soul Food',
     ]} />
@@ -105,7 +105,7 @@ import Marquee from '../components/Marquee.astro';
             </p>
             <h2 class="display">
               Dishes we've <span class="it">perfected</span><br/>
-              over twenty-five years.
+              over 30+ years.
             </h2>
           </div>
           <a href="/menu" class="btn btn-ghost">Full Menu <span class="arr">→</span></a>
@@ -115,39 +115,35 @@ import Marquee from '../components/Marquee.astro';
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/bulgogi.jpg" alt="Beef Bulgogi" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">불고기</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">01</div>
+              <img src="/images/real-bulgogi.jpg" alt="Beef Bulgogi" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">01</div>
             </div>
-            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Beef Bul Go Gi</h3>
-            <p class="body" style="font-size: 14px;">Sliced tender prime beef marinated in homemade Korean BBQ sauce, grilled to perfection.</p>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Beef Bulgogi</h3>
+            <p class="body" style="font-size: 14px;">Thinly sliced beef marinated in a sweet and savory soy-based sauce, grilled to perfection with onions and scallions.</p>
           </article>
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/galbi.jpg" alt="Galbi Gui" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">갈비구이</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">02</div>
+              <img src="/images/real-galbi.jpg" alt="Galbi" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">02</div>
             </div>
-            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Gal Bi Gui</h3>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Galbi</h3>
             <p class="body" style="font-size: 14px;">Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled to a smoky, caramelized finish.</p>
           </article>
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/korean-spread.jpg" alt="Bibimbap" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">비빔밥</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">03</div>
+              <img src="/images/real-bibimbop.jpg" alt="Bibimbop" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">03</div>
             </div>
-            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Bibimbap</h3>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Bibimbop</h3>
             <p class="body" style="font-size: 14px;">A vibrant Korean rice bowl topped with seasoned vegetables, beef, and a fried egg. Served with house gochujang.</p>
           </article>
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/galbi-tang.jpg" alt="Galbi Tang" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">갈비탕</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">04</div>
+              <img src="/images/real-galbi-tang.jpg" alt="Galbi Tang" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">04</div>
             </div>
             <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Galbi Tang</h3>
             <p class="body" style="font-size: 14px;">Beef short rib soup simmered with radish, onions, and glass noodles in a clear, deeply savory broth.</p>
@@ -155,22 +151,20 @@ import Marquee from '../components/Marquee.astro';
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/sushi-hand.jpg" alt="Chef's Sushi Platter" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">스시</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">05</div>
+              <img src="/images/real-kimchi-jjigae.jpg" alt="Kimchi Jjigae" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">05</div>
             </div>
-            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Chef's Sushi Platter</h3>
-            <p class="body" style="font-size: 14px;">Chef's selection, hand-cut daily. Bluefin, hamachi, uni, saba. Served with miso soup.</p>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Kimchi Jjigae</h3>
+            <p class="body" style="font-size: 14px;">Aged kimchi stew simmered with pork, tofu, and vegetables — bold, spicy, and deeply flavorful.</p>
           </article>
 
           <article>
             <div class="dish-img-wrap" style="aspect-ratio: 4/5; margin-bottom: 20px; position: relative; overflow: hidden;">
-              <img src="/images/sashimi.jpg" alt="Sashimi" class="dish-img" />
-              <div style="position: absolute; top: 16px; left: 16px; font-family: var(--korean); color: var(--cream); font-size: 22px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">사시미</div>
-              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">06</div>
+              <img src="/images/real-sushi-platter.jpg" alt="Sushi Sashimi Platter" class="dish-img" />
+              <div class="mono" style="position: absolute; bottom: 16px; right: 16px; color: var(--cream); opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.6);">06</div>
             </div>
-            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Sashimi</h3>
-            <p class="body" style="font-size: 14px;">Today's catch, sliced to order. Served with wasabi, shiso, and pickled ginger.</p>
+            <h3 class="display" style="font-size: 28px; margin-bottom: 8px;">Sushi Sashimi Platter</h3>
+            <p class="body" style="font-size: 14px;">Chef's selection of sushi and sashimi, hand-cut daily. Served with wasabi, pickled ginger, and miso soup.</p>
           </article>
 
         </div>
@@ -181,21 +175,8 @@ import Marquee from '../components/Marquee.astro';
     <section style="background: var(--ink); color: var(--cream); padding: 120px var(--pad);">
       <div class="max-w-site mx-auto story-grid" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center;">
 
-        <div class="ph" style="
-          aspect-ratio: 4/5;
-          background:
-            linear-gradient(135deg, rgba(139,26,26,0.2), transparent),
-            repeating-linear-gradient(135deg, #3a322d 0 8px, #2f2924 8px 9px);
-          border: 1px solid rgba(245,239,227,0.12);
-        ">
-          <div style="
-            position: absolute; inset: 0; display: flex;
-            flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; gap: 10px; color: var(--gold-soft);
-          ">
-            <div class="mono">FAMILY PORTRAIT · DROP IN</div>
-            <div class="mono" style="margin-top: 4px;">THE KIM FAMILY · 2001–PRESENT</div>
-          </div>
+        <div style="aspect-ratio: 4/5; overflow: hidden;">
+          <img src="/images/mr-kim.webp" alt="Mr. Kim" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
         </div>
 
         <div>
@@ -203,14 +184,15 @@ import Marquee from '../components/Marquee.astro';
             Our Story
           </p>
           <h2 class="display" style="color: var(--cream);">
-            A family recipe,<br/>
+            A family legacy,<br/>
             <span class="it" style="color: var(--gold-soft);">two generations</span><br/>
-            in downtown Pittsburgh.
+            in Downtown Pittsburgh.
           </h2>
           <p class="body-lg" style="color: rgba(245,239,227,0.75); margin-top: 28px; max-width: 50ch;">
-            The Kim family opened their first kitchen in 2001 with a handwritten menu
-            and a stone bibimbap bowl brought from Seoul. A quarter century later,
-            the bowl is still on the pass — and the recipes haven't changed.
+            The Kim family opened their first kitchen in 1990, building a reputation
+            for consistency and quality that has spanned over 35 years. Today, Sushi Kim 2
+            carries that history forward at our Smithfield Street location. The city has
+            changed, but our core recipes remain exactly the same.
           </p>
           <a href="/about" class="btn btn-outline-cream" style="margin-top: 36px;">
             Read Our Story <span class="arr">→</span>
@@ -245,7 +227,7 @@ import Marquee from '../components/Marquee.astro';
           <blockquote style="padding: 40px 32px; background: var(--paper); border: 1px solid var(--line);">
             <div style="color: var(--red); font-size: 22px; margin-bottom: 16px;">★★★★★</div>
             <p style="font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink); margin-bottom: 20px;">
-              "Twenty-five years strong for a reason. The Kim family cooks with love."
+              "30 years strong for a reason. The Kim family cooks with love."
             </p>
             <footer class="mono" style="color: var(--ink-mute);">— David R. · Google</footer>
           </blockquote>

@@ -10,6 +10,7 @@ interface MenuItem {
   description?: string;
   tags: string[];
   outOfStock?: boolean;
+  price?: string;
 }
 
 interface Category {
@@ -27,8 +28,8 @@ const categories: Category[] = [
     ko: '추천',
     blurb: "The dishes our regulars order by name. Start here if it's your first visit.",
     items: [
-      { en: 'Chicken Bulgogi', code: 'D3', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
-      { en: 'Shumai', code: 'A5', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
+      { en: 'Chicken Bulgogi', code: 'D3', price: '$20.95', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
+      { en: 'Shumai', code: 'A5', price: '$7.50', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
     ],
   },
   {
@@ -37,10 +38,10 @@ const categories: Category[] = [
     ko: '치킨',
     blurb: 'Crispy, seasoned, and made to share.',
     items: [
-      { en: '6pc Chicken Wings', tags: [] },
-      { en: '12pc Chicken Wings', tags: [] },
-      { en: '18pc Chicken Wings', tags: [] },
-      { en: 'French Fries', tags: ['vegetarian'] },
+      { en: '6pc Chicken Wings', price: '$11.50', tags: [] },
+      { en: '12pc Chicken Wings', price: '$22.00', tags: [] },
+      { en: '18pc Chicken Wings', price: '$32.50', tags: [] },
+      { en: 'French Fries', price: '$5.00', tags: ['vegetarian'] },
     ],
   },
   {
@@ -49,26 +50,26 @@ const categories: Category[] = [
     ko: '에피타이저',
     blurb: 'Small plates, big flavors — several are meals unto themselves.',
     items: [
-      { en: 'Sashimi', code: 'A1', description: '16pc of raw fish combination.', tags: [] },
-      { en: 'Sushi App', code: 'A2', description: '6pc of sushi combination.', tags: [] },
-      { en: 'Janguh Gui', code: 'A3', description: 'Broiled freshwater eel with sauce.', tags: [] },
-      { en: 'Gyoza', code: 'A4', description: '4pc of beef dumplings.', tags: [] },
-      { en: 'Shumai', code: 'A5', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
-      { en: 'Saengsun Jeon', code: 'A6', description: '6pc of pan-fried cod fillet coated in egg batter.', tags: [] },
-      { en: 'Dumpling Soup', code: 'A7', description: 'Beef dumpling with homemade beef soup.', tags: [] },
-      { en: 'Edamame', code: 'A8', description: 'Steamed young soybean.', tags: ['vegetarian'] },
-      { en: 'Oshinko', code: 'A9', description: 'Pickled radish.', tags: ['vegetarian'] },
-      { en: 'Octopus Salad', code: 'A10', description: 'Octopus with mixed vegetable and light dressing.', tags: [] },
-      { en: 'Seaweed Salad', code: 'A11', description: 'Angel-hair threads of seaweed, tangled with sesame seed and a light sesame dressing.', tags: ['vegetarian'] },
-      { en: 'Vegetable Salad', code: 'A12', description: 'Mixed green vegetables with house dressing.', tags: ['vegetarian'] },
-      { en: 'Ebi Su', code: 'A13', description: 'Shrimp with vinegar-based sauce.', tags: [] },
-      { en: 'Tako Su', code: 'A14', description: 'Octopus with vinegar based sauce.', tags: [] },
-      { en: 'Sunomono', code: 'A15', description: 'Shrimp, octopus, clam with vinegar based sauce.', tags: [] },
-      { en: 'Pajeon', code: 'A16', description: 'Savory Korean-style pancake loaded with scallions and vegetables, pan-fried until golden.', tags: [] },
-      { en: 'Steamed Rice', tags: ['vegetarian'] },
-      { en: 'Miso Soup', tags: [] },
-      { en: 'Sushi Rice', tags: ['vegetarian'] },
-      { en: 'Extra Side Dish', tags: [] },
+      { en: 'Sashimi', code: 'A1', price: '$17.95', description: '16pc of raw fish combination.', tags: [] },
+      { en: 'Sushi App', code: 'A2', price: '$11.95', description: '6pc of sushi combination.', tags: [] },
+      { en: 'Janguh Gui', code: 'A3', price: '$15.95', description: 'Broiled freshwater eel with sauce.', tags: [] },
+      { en: 'Gyoza', code: 'A4', price: '$7.95', description: '4pc of beef dumplings.', tags: [] },
+      { en: 'Shumai', code: 'A5', price: '$7.50', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
+      { en: 'Saengsun Jeon', code: 'A6', price: '$10.95', description: '6pc of pan-fried cod fillet coated in egg batter.', tags: [] },
+      { en: 'Dumpling Soup', code: 'A7', price: '$7.95', description: 'Beef dumpling with homemade beef soup.', tags: [] },
+      { en: 'Edamame', code: 'A8', price: '$5.50', description: 'Steamed young soybean.', tags: ['vegetarian'] },
+      { en: 'Oshinko', code: 'A9', price: '$5.50', description: 'Pickled radish.', tags: ['vegetarian'] },
+      { en: 'Octopus Salad', code: 'A10', price: '$7.95', description: 'Octopus with mixed vegetable and light dressing.', tags: [] },
+      { en: 'Seaweed Salad', code: 'A11', price: '$6.95', description: 'Angel-hair threads of seaweed, tangled with sesame seed and a light sesame dressing.', tags: ['vegetarian'] },
+      { en: 'Vegetable Salad', code: 'A12', price: '$5.50', description: 'Mixed green vegetables with house dressing.', tags: ['vegetarian'] },
+      { en: 'Ebi Su', code: 'A13', price: '$9.95', description: 'Shrimp with vinegar-based sauce.', tags: [] },
+      { en: 'Tako Su', code: 'A14', price: '$10.95', description: 'Octopus with vinegar based sauce.', tags: [] },
+      { en: 'Sunomono', code: 'A15', price: '$13.95', description: 'Shrimp, octopus, clam with vinegar based sauce.', tags: [] },
+      { en: 'Pajeon', code: 'A16', price: '$18.95', description: 'Savory Korean-style pancake loaded with scallions and vegetables, pan-fried until golden.', tags: [] },
+      { en: 'Steamed Rice', price: '$2.50', tags: ['vegetarian'] },
+      { en: 'Miso Soup', price: '$2.95', tags: [] },
+      { en: 'Sushi Rice', price: '$3.95', tags: ['vegetarian'] },
+      { en: 'Extra Side Dish', price: '$3.95', tags: [] },
     ],
   },
   {
@@ -77,15 +78,15 @@ const categories: Category[] = [
     ko: '찌개 · 탕',
     blurb: 'Restorative bowls simmered low and slow. Order with steamed rice — they belong together.',
     items: [
-      { en: 'Galbi Tang', code: 'T1', description: 'Beef short rib soup simmered with radish, onions, and glass noodles in a clear, savory broth.', tags: ['signature'] },
-      { en: 'Dduk Mandu Guk', code: 'T2', description: 'A comforting soup of sliced rice cakes and beef dumplings in a light, flavorful broth.', tags: [] },
-      { en: 'Yookgaejang', code: 'T3', description: 'Spicy shredded beef soup with scallions, mushrooms, and glass noodles in a rich red chili broth.', tags: ['spicy'] },
-      { en: 'Kimchi Jjigae', code: 'T4', description: 'Aged kimchi stew simmered with pork, tofu, and vegetables — bold, spicy, and deeply flavorful.', tags: ['spicy', 'signature'] },
-      { en: 'Soondubu', code: 'T5', description: 'Soft tofu stew with vegetables and your choice of seafood or meat, served bubbling hot in a spicy broth.', tags: ['spicy'] },
-      { en: 'Daegu Maeuntang', code: 'T6', description: 'Spicy pollack stew with radish, tofu, and vegetables in a fiery red broth.', tags: ['spicy'] },
-      { en: 'Vegetable Maeuntang', code: 'T7', description: 'A spicy, plant-based stew with tofu and seasonal vegetables in a rich chili broth.', tags: ['spicy', 'vegetarian'] },
-      { en: 'Doenjang Jjigae', code: 'T8', description: 'A savory soybean paste stew with tofu, zucchini, and mushrooms.', tags: [] },
-      { en: 'Sukuh Jjigae', code: 'T9', description: 'A comforting soup packed with cod, clams, mussels, scallops, squid, shrimp, and octopus, simmered with mixed veggies in a rich, spicy savory broth.', tags: ['spicy'] },
+      { en: 'Galbi Tang', code: 'T1', price: '$22.95', description: 'Beef short rib soup simmered with radish, onions, and glass noodles in a clear, savory broth.', tags: ['signature'] },
+      { en: 'Dduk Mandu Guk', code: 'T2', price: '$19.95', description: 'A comforting soup of sliced rice cakes and beef dumplings in a light, flavorful broth.', tags: [] },
+      { en: 'Yookgaejang', code: 'T3', price: '$20.95', description: 'Spicy shredded beef soup with scallions, mushrooms, and glass noodles in a rich red chili broth.', tags: ['spicy'] },
+      { en: 'Kimchi Jjigae', code: 'T4', price: '$19.95', description: 'Aged kimchi stew simmered with pork, tofu, and vegetables — bold, spicy, and deeply flavorful.', tags: ['spicy', 'signature'] },
+      { en: 'Soondubu', code: 'T5', price: '$17.95', description: 'Soft tofu stew with vegetables and your choice of seafood or meat, served bubbling hot in a spicy broth.', tags: ['spicy'] },
+      { en: 'Daegu Maeuntang', code: 'T6', price: '$22.95', description: 'Spicy pollack stew with radish, tofu, and vegetables in a fiery red broth.', tags: ['spicy'] },
+      { en: 'Vegetable Maeuntang', code: 'T7', price: '$18.95', description: 'A spicy, plant-based stew with tofu and seasonal vegetables in a rich chili broth.', tags: ['spicy', 'vegetarian'] },
+      { en: 'Doenjang Jjigae', code: 'T8', price: '$18.95', description: 'A savory soybean paste stew with tofu, zucchini, and mushrooms.', tags: [] },
+      { en: 'Sukuh Jjigae', code: 'T9', price: '$24.95', description: 'A comforting soup packed with cod, clams, mussels, scallops, squid, shrimp, and octopus, simmered with mixed veggies in a rich, spicy savory broth.', tags: ['spicy'] },
     ],
   },
   {
@@ -94,21 +95,21 @@ const categories: Category[] = [
     ko: '메인',
     blurb: "Kim family recipes served the same way they've been served for 30+ years.",
     items: [
-      { en: 'Beef Bulgogi', code: 'D1', description: 'Thinly sliced beef marinated in a sweet and savory soy-based sauce, grilled to perfection with onions and scallions.', tags: ['signature'] },
-      { en: 'Galbi Gui', code: 'D2', description: 'Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled for a smoky, caramelized finish.', tags: ['signature'] },
-      { en: 'Chicken Bulgogi', code: 'D3', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
-      { en: 'Pork Bulgogi', code: 'D4', description: 'Spicy marinated pork stir-fried with onions for a bold, flavorful bite.', tags: ['spicy'] },
-      { en: 'Kimchi Jaeyook', code: 'D5', description: 'Spicy stir-fried pork cooked with aged kimchi for a tangy, fiery combo packed with flavors.', tags: ['spicy'] },
-      { en: 'Japchae', code: 'D6', description: 'Glass noodles stir-fried with beef and mixed vegetables in a light soy-garlic sauce. A sweet and savory Korean favorite.', tags: ['vegetarian'] },
-      { en: 'Teriyaki', code: 'D7', description: 'Grilled protein glazed in classic teriyaki sauce, served with veggies and rice.', tags: [] },
-      { en: 'Saengsun Jeon', code: 'D8', description: 'Lightly pan-fried fish fillets dipped in egg batter, crispy on the outside, tender and savory inside.', tags: [] },
-      { en: 'Hwe Muchim', code: 'D9', description: 'Spicy Korean-style sashimi salad — sliced raw fish mixed with vegetables in a tangy, spicy chili sauce.', tags: ['spicy'] },
-      { en: 'Fried Rice', code: 'D10', description: 'Fried rice with egg, vegetables, and your choice of beef, chicken, shrimp, or vegetables.', tags: [] },
-      { en: 'Ojinguh Bokkeum', code: 'D11', description: 'Stir-fried squid with vegetables in a spicy sauce — fiery, tender, and full of flavor.', tags: ['spicy'] },
-      { en: 'Bibimbap', code: 'D12', description: 'A colorful rice bowl topped with assorted veggies, beef, and a fried egg, served with gochujang sauce on the side.', tags: ['vegetarian-option'] },
-      { en: 'Mandu Gui', code: 'D14', description: 'Pan-fried Korean dumplings filled with seasoned beef and vegetables, crispy on the outside, juicy inside.', tags: [] },
-      { en: 'Janguh Dupbap', code: 'D15', description: 'Grilled freshwater eel glazed in sweet soy sauce, served over warm rice with veggies.', tags: [] },
-      { en: 'Hwe Dupbap', code: 'D16', description: 'Fresh assorted sashimi over rice, topped with vegetables and a spicy gochujang vinaigrette.', tags: ['spicy'] },
+      { en: 'Beef Bulgogi', code: 'D1', price: '$21.95', description: 'Thinly sliced beef marinated in a sweet and savory soy-based sauce, grilled to perfection with onions and scallions.', tags: ['signature'] },
+      { en: 'Galbi Gui', code: 'D2', price: '$27.95', description: 'Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled for a smoky, caramelized finish.', tags: ['signature'] },
+      { en: 'Chicken Bulgogi', code: 'D3', price: '$20.95', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
+      { en: 'Pork Bulgogi', code: 'D4', price: '$20.95', description: 'Spicy marinated pork stir-fried with onions for a bold, flavorful bite.', tags: ['spicy'] },
+      { en: 'Kimchi Jaeyook', code: 'D5', price: '$20.95', description: 'Spicy stir-fried pork cooked with aged kimchi for a tangy, fiery combo packed with flavors.', tags: ['spicy'] },
+      { en: 'Japchae', code: 'D6', price: '$17.95', description: 'Glass noodles stir-fried with beef and mixed vegetables in a light soy-garlic sauce. A sweet and savory Korean favorite.', tags: ['vegetarian'] },
+      { en: 'Teriyaki', code: 'D7', price: '$19.95', description: 'Grilled protein glazed in classic teriyaki sauce, served with veggies and rice.', tags: [] },
+      { en: 'Saengsun Jeon', code: 'D8', price: '$19.95', description: 'Lightly pan-fried fish fillets dipped in egg batter, crispy on the outside, tender and savory inside.', tags: [] },
+      { en: 'Hwe Muchim', code: 'D9', price: '$25.95', description: 'Spicy Korean-style sashimi salad — sliced raw fish mixed with vegetables in a tangy, spicy chili sauce.', tags: ['spicy'] },
+      { en: 'Fried Rice', code: 'D10', price: '$16.95', description: 'Fried rice with egg, vegetables, and your choice of beef, chicken, shrimp, or vegetables.', tags: [] },
+      { en: 'Ojinguh Bokkeum', code: 'D11', price: '$20.95', description: 'Stir-fried squid with vegetables in a spicy sauce — fiery, tender, and full of flavor.', tags: ['spicy'] },
+      { en: 'Bibimbap', code: 'D12', price: '$16.95', description: 'A colorful rice bowl topped with assorted veggies, beef, and a fried egg, served with gochujang sauce on the side.', tags: ['vegetarian-option'] },
+      { en: 'Mandu Gui', code: 'D14', price: '$16.95', description: 'Pan-fried Korean dumplings filled with seasoned beef and vegetables, crispy on the outside, juicy inside.', tags: [] },
+      { en: 'Janguh Dupbap', code: 'D15', price: '$23.95', description: 'Grilled freshwater eel glazed in sweet soy sauce, served over warm rice with veggies.', tags: [] },
+      { en: 'Hwe Dupbap', code: 'D16', price: '$22.95', description: 'Fresh assorted sashimi over rice, topped with vegetables and a spicy gochujang vinaigrette.', tags: ['spicy'] },
     ],
   },
   {
@@ -117,14 +118,14 @@ const categories: Category[] = [
     ko: '스시 세트',
     blurb: "Hand-cut by our sushi chefs every morning. Today's catch is on the board at the bar.",
     items: [
-      { en: '12 Piece Sushi Platter', description: "A chef's selection of 12 pieces of assorted sushi, featuring fresh cuts over seasoned rice.", tags: ['signature'] },
-      { en: '24 Piece Sushi Platter', description: 'A larger variety of 24 assorted sushi pieces, perfect for sharing or satisfying bigger appetites.', tags: ['signature'] },
-      { en: 'Chirashi', description: "A chef's daily assortment of fresh sashimi over sushi rice.", tags: [] },
-      { en: 'Chirashi B', description: "Chef's selection of fresh fish and shellfish over sushi rice.", tags: [] },
-      { en: "Kim's Favorite Roll", description: 'Blend of fresh tuna, yellowtail, salmon, and broiled eel, rolled with seasoned rice and nori for a balanced and flavorful experience. (16pc)', tags: ['signature'] },
-      { en: "Kim's Spicy Roll", description: 'A vibrant blend of tuna, yellowtail, crab, and salmon, rolled with seasoned rice and nori, with a spicy sauce for a flavorful kick.', tags: ['signature', 'spicy'] },
-      { en: 'Sashimi Platter', description: 'An assortment of fresh, sliced raw fish — no rice, just pure sashimi, beautifully presented.', tags: [] },
-      { en: 'Sushi Sashimi Platter', description: 'A balanced combination of fresh sushi and sliced sashimi, served with rice and garnishes.', tags: [] },
+      { en: '12 Piece Sushi Platter', price: '$21.95', description: "A chef's selection of 12 pieces of assorted sushi, featuring fresh cuts over seasoned rice.", tags: ['signature'] },
+      { en: '24 Piece Sushi Platter', price: '$34.95', description: 'A larger variety of 24 assorted sushi pieces, perfect for sharing or satisfying bigger appetites.', tags: ['signature'] },
+      { en: 'Chirashi', price: '$22.95', description: "A chef's daily assortment of fresh sashimi over sushi rice.", tags: [] },
+      { en: 'Chirashi B', price: '$25.95', description: "Chef's selection of fresh fish and shellfish over sushi rice.", tags: [] },
+      { en: "Kim's Favorite Roll", price: '$24.95', description: 'Blend of fresh tuna, yellowtail, salmon, and broiled eel, rolled with seasoned rice and nori for a balanced and flavorful experience. (16pc)', tags: ['signature'] },
+      { en: "Kim's Spicy Roll", price: '$23.95', description: 'A vibrant blend of tuna, yellowtail, crab, and salmon, rolled with seasoned rice and nori, with a spicy sauce for a flavorful kick.', tags: ['signature', 'spicy'] },
+      { en: 'Sashimi Platter', price: '$37.95', description: 'An assortment of fresh, sliced raw fish — no rice, just pure sashimi, beautifully presented.', tags: [] },
+      { en: 'Sushi Sashimi Platter', price: '$37.95', description: 'A balanced combination of fresh sushi and sliced sashimi, served with rice and garnishes.', tags: [] },
     ],
   },
   {
@@ -133,12 +134,12 @@ const categories: Category[] = [
     ko: '스페셜 롤',
     blurb: 'Signature creations from our sushi bar — each one a Downtown Pittsburgh original.',
     items: [
-      { en: 'After Dead Roll', description: 'Kani, tobiko, and cucumber wrapped tight, then hit with a fiery sauce. Bold, clean crunch meets pure heat. Handle with caution.', tags: ['spicy', 'signature'] },
-      { en: 'Downtown Roll', description: 'Half soft shell crab, half shrimp tempura, fully bold. With cucumber and mayo for a creamy crunch, this roll brings the best of both worlds.', tags: ['signature'] },
-      { en: 'Dragon Roll', tags: [] },
-      { en: 'Dynamite Roll', description: 'Kani, tobiko, and cucumber with homemade spicy sauce (8pc).', tags: ['spicy'] },
-      { en: 'Futomaki Roll', description: 'A classic jumbo roll packed with tamago, kani, cucumber, pickled radish, and spinach. Colorful, balanced, and satisfyingly bold in every bite.', tags: [] },
-      { en: 'Rainbow Roll', description: 'A California roll base topped with vibrant slices of tuna, salmon, and other fresh fish. A colorful mix of flavor, texture, and freshness.', tags: [] },
+      { en: 'After Dead Roll', price: '$13.95', description: 'Kani, tobiko, and cucumber wrapped tight, then hit with a fiery sauce. Bold, clean crunch meets pure heat. Handle with caution.', tags: ['spicy', 'signature'] },
+      { en: 'Downtown Roll', price: '$16.95', description: 'Half soft shell crab, half shrimp tempura, fully bold. With cucumber and mayo for a creamy crunch, this roll brings the best of both worlds.', tags: ['signature'] },
+      { en: 'Dragon Roll', price: '$17.95', tags: [] },
+      { en: 'Dynamite Roll', price: '$13.95', description: 'Kani, tobiko, and cucumber with homemade spicy sauce (8pc).', tags: ['spicy'] },
+      { en: 'Futomaki Roll', price: '$17.95', description: 'A classic jumbo roll packed with tamago, kani, cucumber, pickled radish, and spinach. Colorful, balanced, and satisfyingly bold in every bite.', tags: [] },
+      { en: 'Rainbow Roll', price: '$15.95', description: 'A California roll base topped with vibrant slices of tuna, salmon, and other fresh fish. A colorful mix of flavor, texture, and freshness.', tags: [] },
     ],
   },
   {
@@ -147,27 +148,27 @@ const categories: Category[] = [
     ko: '롤',
     blurb: "Classic maki, made fresh. Ask your server about today's specials.",
     items: [
-      { en: 'Avocado Roll', description: 'Creamy avocado slices wrapped in sushi rice and nori, offering a smooth and mild taste.', tags: ['vegetarian'] },
-      { en: 'BBQ Scallop Roll', description: 'Grilled scallops glazed with a sweet sauce, paired with cucumber, wrapped in rice and nori.', tags: [] },
-      { en: 'BBQ Yellowtail Roll', description: 'Grilled yellowtail with a smoky flavor, complemented by cucumber and wrapped in sushi rice and nori.', tags: [] },
-      { en: 'Bulgogi Roll', description: 'Marinated Korean-style grilled beef with pickled radish, wrapped in sushi rice and nori, blending savory and sweet flavors.', tags: [] },
-      { en: 'California Roll', description: 'A popular inside-out roll with imitation crab and cucumber, topped with sesame seeds and tobiko.', tags: [] },
-      { en: 'Cucumber Roll', description: 'Fresh cucumber strips rolled in rice and nori, providing a crisp and refreshing bite.', tags: ['vegetarian'] },
-      { en: 'Eel Roll', description: 'Grilled freshwater eel glazed with sweet soy-based sauce, combined with cucumber and wrapped in rice and nori.', tags: [] },
-      { en: 'Fried Tofu Roll', description: 'Sweet and savory fried tofu paired with sushi rice, wrapped in nori for a vegetarian option.', tags: ['vegetarian'] },
-      { en: 'Philadelphia Roll', description: 'Smoked salmon, cream cheese, and cucumber rolled together for a rich and creamy flavor profile.', tags: [] },
-      { en: 'Pickled Radish Roll', description: 'Tangy and crunchy pickled daikon radish wrapped in rice and nori, offering a vibrant flavor.', tags: ['vegetarian'] },
-      { en: 'Red Snapper Roll', description: 'Delicate red snapper wrapped in rice and nori for a light, clean flavor.', tags: [] },
-      { en: 'Salmon Roll', description: 'Fresh salmon rolled in sushi rice and nori, offering a rich and refreshing flavor.', tags: [] },
-      { en: 'Salmon Skin Roll', description: 'Crispy grilled salmon skin paired with cucumber, offering a smoky and savory flavor.', tags: [] },
-      { en: 'Scallop Roll', description: 'Sweet, tender scallops wrapped with sushi rice and nori, creating a delicate and slightly creamy bite.', tags: [] },
-      { en: 'Seaweed Salad Roll', description: 'Seasoned seaweed salad combined with sushi rice and nori, delivering a savory and slightly sweet taste.', tags: ['vegetarian'] },
-      { en: 'Shrimp Tempura Roll', description: 'Crispy shrimp tempura with mayo, cucumber, and tobiko, rolled in rice and nori, offering a delightful crunch.', tags: [] },
-      { en: 'Smoked Salmon Roll', description: 'Smoked salmon combined with cucumber, wrapped in rice and nori for a rich and creamy taste.', tags: [] },
-      { en: 'Tuna Roll', description: 'A classic hosomaki featuring lean, tender tuna wrapped in seasoned rice and nori.', tags: [] },
-      { en: 'Vegetable Combo Roll', description: 'A medley of fresh vegetables like spinach, cucumber, and carrots rolled together for a colorful and healthy option.', tags: ['vegetarian'] },
-      { en: 'White Tuna Roll', description: 'Mild and buttery white tuna (albacore) paired with seasoned rice and nori, offering a smooth texture and subtle taste.', tags: [] },
-      { en: 'Yellowtail Roll', description: 'Yellowtail delivering a buttery and mildly sweet taste.', tags: [] },
+      { en: 'Avocado Roll', price: '$6.95', description: 'Creamy avocado slices wrapped in sushi rice and nori, offering a smooth and mild taste.', tags: ['vegetarian'] },
+      { en: 'BBQ Scallop Roll', price: '$8.95', description: 'Grilled scallops glazed with a sweet sauce, paired with cucumber, wrapped in rice and nori.', tags: [] },
+      { en: 'BBQ Yellowtail Roll', price: '$8.95', description: 'Grilled yellowtail with a smoky flavor, complemented by cucumber and wrapped in sushi rice and nori.', tags: [] },
+      { en: 'Bulgogi Roll', price: '$7.95', description: 'Marinated Korean-style grilled beef with pickled radish, wrapped in sushi rice and nori, blending savory and sweet flavors.', tags: [] },
+      { en: 'California Roll', price: '$6.95', description: 'A popular inside-out roll with imitation crab and cucumber, topped with sesame seeds and tobiko.', tags: [] },
+      { en: 'Cucumber Roll', price: '$5.95', description: 'Fresh cucumber strips rolled in rice and nori, providing a crisp and refreshing bite.', tags: ['vegetarian'] },
+      { en: 'Eel Roll', price: '$8.95', description: 'Grilled freshwater eel glazed with sweet soy-based sauce, combined with cucumber and wrapped in rice and nori.', tags: [] },
+      { en: 'Fried Tofu Roll', price: '$6.95', description: 'Sweet and savory fried tofu paired with sushi rice, wrapped in nori for a vegetarian option.', tags: ['vegetarian'] },
+      { en: 'Philadelphia Roll', price: '$7.95', description: 'Smoked salmon, cream cheese, and cucumber rolled together for a rich and creamy flavor profile.', tags: [] },
+      { en: 'Pickled Radish Roll', price: '$5.95', description: 'Tangy and crunchy pickled daikon radish wrapped in rice and nori, offering a vibrant flavor.', tags: ['vegetarian'] },
+      { en: 'Red Snapper Roll', price: '$8.95', description: 'Delicate red snapper wrapped in rice and nori for a light, clean flavor.', tags: [] },
+      { en: 'Salmon Roll', price: '$7.95', description: 'Fresh salmon rolled in sushi rice and nori, offering a rich and refreshing flavor.', tags: [] },
+      { en: 'Salmon Skin Roll', price: '$7.95', description: 'Crispy grilled salmon skin paired with cucumber, offering a smoky and savory flavor.', tags: [] },
+      { en: 'Scallop Roll', price: '$8.95', description: 'Sweet, tender scallops wrapped with sushi rice and nori, creating a delicate and slightly creamy bite.', tags: [] },
+      { en: 'Seaweed Salad Roll', price: '$6.95', description: 'Seasoned seaweed salad combined with sushi rice and nori, delivering a savory and slightly sweet taste.', tags: ['vegetarian'] },
+      { en: 'Shrimp Tempura Roll', price: '$8.95', description: 'Crispy shrimp tempura with mayo, cucumber, and tobiko, rolled in rice and nori, offering a delightful crunch.', tags: [] },
+      { en: 'Smoked Salmon Roll', price: '$10.95', description: 'Smoked salmon combined with cucumber, wrapped in rice and nori for a rich and creamy taste.', tags: [] },
+      { en: 'Tuna Roll', price: '$7.95', description: 'A classic hosomaki featuring lean, tender tuna wrapped in seasoned rice and nori.', tags: [] },
+      { en: 'Vegetable Combo Roll', price: '$6.95', description: 'A medley of fresh vegetables like spinach, cucumber, and carrots rolled together for a colorful and healthy option.', tags: ['vegetarian'] },
+      { en: 'White Tuna Roll', price: '$7.95', description: 'Mild and buttery white tuna (albacore) paired with seasoned rice and nori, offering a smooth texture and subtle taste.', tags: [] },
+      { en: 'Yellowtail Roll', price: '$7.95', description: 'Yellowtail delivering a buttery and mildly sweet taste.', tags: [] },
     ],
   },
   {
@@ -176,23 +177,23 @@ const categories: Category[] = [
     ko: '단품',
     blurb: 'Individual nigiri and sashimi pieces. Two pieces per order unless noted.',
     items: [
-      { en: 'Maguro', subtitle: 'Tuna', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Sake', subtitle: 'Salmon', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Hamachi', subtitle: 'Yellowtail', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Tai', subtitle: 'Red Snapper', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Unagi', subtitle: 'Eel', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Albacore', subtitle: 'White Tuna', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Saba', subtitle: 'Mackerel', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Tako', subtitle: 'Octopus', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Ika', subtitle: 'Squid', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Hotate Gai', subtitle: 'Scallop', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Hokki Gai', subtitle: 'Artic Clam', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Tobiko', subtitle: 'Flying Fish Roe', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Ebi', subtitle: 'Shrimp', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Smoked Salmon', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Kani', subtitle: 'Crab', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
-      { en: 'Tamago', subtitle: 'Egg Omelette', description: 'A delicate, sweet Japanese rolled omelet layered atop vinegared rice and secured with a strip of nori, providing a light and satisfying taste.', tags: [] },
-      { en: 'Inari', subtitle: 'Fried Tofu', description: 'Sweet and savory sushi rice encased in a marinated deep-fried tofu pouch, offering a tender texture with a delightful balance of flavors.', tags: ['vegetarian'] },
+      { en: 'Maguro', subtitle: 'Tuna', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Sake', subtitle: 'Salmon', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hamachi', subtitle: 'Yellowtail', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tai', subtitle: 'Red Snapper', price: '$8.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Unagi', subtitle: 'Eel', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Albacore', subtitle: 'White Tuna', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Saba', subtitle: 'Mackerel', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tako', subtitle: 'Octopus', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Ika', subtitle: 'Squid', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hotate Gai', subtitle: 'Scallop', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Hokki Gai', subtitle: 'Artic Clam', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tobiko', subtitle: 'Flying Fish Roe', price: '$7.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Ebi', subtitle: 'Shrimp', price: '$6.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Smoked Salmon', price: '$11.50', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Kani', subtitle: 'Crab', price: '$5.95', description: 'Choose 2 pieces, served either as nigiri or sashimi.', tags: [] },
+      { en: 'Tamago', subtitle: 'Egg Omelette', price: '$5.95', description: 'A delicate, sweet Japanese rolled omelet layered atop vinegared rice and secured with a strip of nori, providing a light and satisfying taste.', tags: [] },
+      { en: 'Inari', subtitle: 'Fried Tofu', price: '$5.95', description: 'Sweet and savory sushi rice encased in a marinated deep-fried tofu pouch, offering a tender texture with a delightful balance of flavors.', tags: ['vegetarian'] },
     ],
   },
   {
@@ -201,9 +202,9 @@ const categories: Category[] = [
     ko: '스페셜',
     blurb: 'Hot pot and braised dishes — perfect for the table to share.',
     items: [
-      { en: 'Haemool Jeongol', code: 'J1', description: 'Seafood hot pot with shrimp, squid, mussels, and vegetables in a spicy broth, great for sharing.', tags: ['spicy'] },
-      { en: 'Bulnak Jeongol', code: 'J2', description: 'Spicy hot pot with marinated beef bulgogi and octopus, simmered with vegetables in a bold broth.', tags: ['spicy'] },
-      { en: 'Dakdori Tang', code: 'J3', description: 'Spicy braised chicken stew with potatoes, carrots, and onions in a rich red pepper sauce.', tags: ['spicy'] },
+      { en: 'Haemool Jeongol', code: 'J1', price: '$49.95', description: 'Seafood hot pot with shrimp, squid, mussels, and vegetables in a spicy broth, great for sharing.', tags: ['spicy'] },
+      { en: 'Bulnak Jeongol', code: 'J2', price: '$48.95', description: 'Spicy hot pot with marinated beef bulgogi and octopus, simmered with vegetables in a bold broth.', tags: ['spicy'] },
+      { en: 'Dakdori Tang', code: 'J3', price: '$47.95', description: 'Spicy braised chicken stew with potatoes, carrots, and onions in a rich red pepper sauce.', tags: ['spicy'] },
     ],
   },
   {
@@ -212,22 +213,173 @@ const categories: Category[] = [
     ko: '음료',
     blurb: 'Soft drinks and sparkling ades.',
     items: [
-      { en: 'Coca-Cola', description: 'Coca-Cola Original Taste, the crisp, refreshing taste you know and love.', tags: [] },
-      { en: 'Coca-Cola Zero Sugar', description: 'Great taste of Coca-Cola with zero sugar, zero calories.', tags: [] },
-      { en: 'Brisk', tags: [], outOfStock: true },
-      { en: 'Sprite', description: 'Classic, cool, crisp lemon-lime flavored taste that\'s caffeine free.', tags: [] },
-      { en: 'Perrier', tags: [] },
-      { en: 'Ginger Ale', tags: [] },
-      { en: 'Bottled Water', tags: [] },
-      { en: 'Sparkling Yuzu Ade', tags: [] },
-      { en: 'Sparkling Passion Fruit Ade', tags: [] },
-      { en: 'Sparkling Mango Ade', tags: [] },
+      { en: 'Coca-Cola', price: '$2.00', description: 'Coca-Cola Original Taste, the crisp, refreshing taste you know and love.', tags: [] },
+      { en: 'Coca-Cola Zero Sugar', price: '$2.00', description: 'Great taste of Coca-Cola with zero sugar, zero calories.', tags: [] },
+      { en: 'Brisk', price: '$2.00', tags: [], outOfStock: true },
+      { en: 'Sprite', price: '$2.00', description: 'Classic, cool, crisp lemon-lime flavored taste that\'s caffeine free.', tags: [] },
+      { en: 'Perrier', price: '$4.00', tags: [] },
+      { en: 'Ginger Ale', price: '$2.00', tags: [] },
+      { en: 'Bottled Water', price: '$2.00', tags: [] },
+      { en: 'Sparkling Yuzu Ade', price: '$5.00', tags: [] },
+      { en: 'Sparkling Passion Fruit Ade', price: '$5.00', tags: [] },
+      { en: 'Sparkling Mango Ade', price: '$5.00', tags: [] },
     ],
   },
 ];
+
+// Build Menu schema from categories data — skips 'featured' to avoid duplicate items
+const menuSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  '@id': 'https://sushikim2.com/menu#menu',
+  name: 'Sushi Kim 2 Full Menu',
+  description:
+    'Complete menu of Sushi Kim 2, featuring authentic Korean home cooking and fresh Japanese sushi in Downtown Pittsburgh.',
+  url: 'https://sushikim2.com/menu',
+  inLanguage: 'en',
+  hasMenuSection: categories
+    .filter(cat => cat.id !== 'featured')
+    .map(cat => ({
+      '@type': 'MenuSection',
+      name: cat.label,
+      description: cat.blurb,
+      hasMenuItem: cat.items.map(item => {
+        const fullName = [item.code, item.en, item.subtitle].filter(Boolean).join(' — ');
+        const entry: Record<string, unknown> = {
+          '@type': 'MenuItem',
+          name: fullName,
+        };
+        if (item.description) entry.description = item.description;
+        if (item.price) {
+          entry.offers = {
+            '@type': 'Offer',
+            price: item.price.replace('$', ''),
+            priceCurrency: 'USD',
+            availability: item.outOfStock
+              ? 'https://schema.org/OutOfStock'
+              : 'https://schema.org/InStock',
+          };
+        }
+        if (item.tags.includes('vegetarian')) {
+          entry.suitableForDiet = 'https://schema.org/VegetarianDiet';
+        }
+        return entry;
+      }),
+    })),
+};
+
+const menuPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://sushikim2.com/menu#webpage',
+  name: 'Menu — Sushi Kim 2 · Downtown Pittsburgh',
+  url: 'https://sushikim2.com/menu',
+  description:
+    'Full menu of Sushi Kim 2 featuring Korean home cooking — bulgogi, galbi, bibimbap, jjigae — alongside fresh sushi, sashimi, and specialty rolls. Prices included.',
+  isPartOf: { '@id': 'https://sushikim2.com/#website' },
+  about: { '@id': 'https://sushikim2.com/#restaurant' },
+};
+
+const menuFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://sushikim2.com/menu#faq',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Sushi Kim 2 a Korean restaurant or a Japanese restaurant?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sushi Kim 2 serves both Korean and Japanese food. They have been cooking Korean food since 1990 — bibimbap, bulgogi, galbi, jjigae, doenjang jjigae — and their sushi and sashimi have been on the menu for decades.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I order sushi and Korean food at the same table at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes — that is a specialty of Sushi Kim 2. Many regulars mix a sushi platter with a bowl of galbi tang or a plate of bulgogi. Everything comes out together.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the KFC at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'KFC at Sushi Kim 2 stands for Korean Fried Chicken. It is double-fried until shatteringly crisp, then tossed in your choice of sauce. Available in 6, 12, and 18 piece orders.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the most popular dishes at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The most popular dishes at Sushi Kim 2 are beef bulgogi ($21.95), galbi ($27.95), bibimbap ($16.95), galbi tang ($22.95), and the chef\'s sushi platter. These are served every day and have been on the menu for decades.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Sushi Kim 2 have vegetarian options?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Sushi Kim 2 has several vegetarian options including bibimbap (can be made vegetarian), doenjang jjigae (available without meat), vegetable maeuntang, edamame, seaweed salad, avocado roll, cucumber roll, and more.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How spicy is the food at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most dishes at Sushi Kim 2 are not aggressively hot by default. Kimchi jjigae, yookgaejang, and several other Korean soups have a kick. If you want things hotter or milder, ask your server.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Sushi Kim 2 serve lunch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Sushi Kim 2 serves lunch Tuesday through Saturday from 11:30 AM to 2:30 PM. The full menu is available at lunch. Sunday is all-day service from 11:30 AM to 8:00 PM.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I order Sushi Kim 2 online?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Sushi Kim 2 uses Toast for online ordering at order.toasttab.com/online/sushi-kim-2. You can also call 412-600-1000 for phone orders.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between sashimi and sushi at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Sashimi at Sushi Kim 2 is sliced fish only — no rice. The sushi platter includes both nigiri (fish on rice) and rolls. The chef's platter is a daily selection based on what came in fresh, starting at $21.95 for 12 pieces.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Sushi Kim 2 accommodate gluten-free diners?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Some dishes at Sushi Kim 2 are naturally gluten-free, but soy sauce is used across the kitchen. Let your server know about any allergies and they will do their best to accommodate you safely.',
+      },
+    },
+  ],
+};
 ---
 
-<Layout title="Menu — Sushi Kim 2 · Downtown Pittsburgh">
+<Layout
+  title="Menu — Sushi Kim 2 · Downtown Pittsburgh"
+  description="Full menu with prices — Korean home cooking, fresh sushi, and specialty rolls at Sushi Kim 2, 110 Smithfield St Downtown Pittsburgh."
+  canonicalPath="/menu"
+  ogImage="/images/real-sushi-platter.jpg"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(menuPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(menuSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(menuFaqSchema)} />
+  </Fragment>
   <Nav />
 
   <main class="page">
@@ -325,27 +477,32 @@ const categories: Category[] = [
                     data-name={(item.en + ' ' + (item.subtitle ?? '') + ' ' + (item.code ?? '') + ' ' + (item.description ?? '')).toLowerCase()}
                     style={item.outOfStock ? 'opacity: 0.45;' : ''}
                   >
-                    <div style="display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: item.description ? '6px' : '0';">
-                      {item.code && (
-                        <span class="item-code">{item.code}</span>
-                      )}
-                      <h3 class="item-name" style={item.outOfStock ? 'text-decoration: line-through;' : ''}>
-                        {item.en}
-                      </h3>
-                      {item.subtitle && (
-                        <span class="item-subtitle">{item.subtitle}</span>
-                      )}
-                      {item.outOfStock && (
-                        <span class="item-oos">Out of stock</span>
-                      )}
-                      {item.tags.includes('signature') && (
-                        <span class="tag-signature">Signature</span>
-                      )}
-                      {item.tags.includes('spicy') && (
-                        <span class="tag-dot" style="background: var(--red);" title="Spicy"></span>
-                      )}
-                      {item.tags.includes('vegetarian') && (
-                        <span class="tag-dot" style="background: var(--gold);" title="Vegetarian"></span>
+                    <div style="display: flex; align-items: baseline; gap: 16px;">
+                      <div style="display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; flex: 1;">
+                        {item.code && (
+                          <span class="item-code">{item.code}</span>
+                        )}
+                        <h3 class="item-name" style={item.outOfStock ? 'text-decoration: line-through;' : ''}>
+                          {item.en}
+                        </h3>
+                        {item.subtitle && (
+                          <span class="item-subtitle">{item.subtitle}</span>
+                        )}
+                        {item.outOfStock && (
+                          <span class="item-oos">Out of stock</span>
+                        )}
+                        {item.tags.includes('signature') && (
+                          <span class="tag-signature">Signature</span>
+                        )}
+                        {item.tags.includes('spicy') && (
+                          <span class="tag-dot" style="background: var(--red);" title="Spicy"></span>
+                        )}
+                        {item.tags.includes('vegetarian') && (
+                          <span class="tag-dot" style="background: var(--gold);" title="Vegetarian"></span>
+                        )}
+                      </div>
+                      {item.price && (
+                        <span class="item-price">{item.price}</span>
                       )}
                     </div>
                     {item.description && (
@@ -377,6 +534,71 @@ const categories: Category[] = [
             Order Online <span class="arr">→</span>
           </a>
           <a href="/reservations" class="btn btn-ghost">Reserve a Table</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu FAQ -->
+    <section class="px-pad" style="padding-top: 80px; padding-bottom: 100px; border-top: 1px solid var(--line);">
+      <div class="max-w-site mx-auto">
+
+        <p class="eyebrow" style="margin-bottom: 20px;">Menu FAQ</p>
+        <h2 class="display" style="margin-bottom: 60px; max-width: 22ch;">
+          Questions about <span class="it">the menu.</span>
+        </h2>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <div class="faq-q">Is this a Korean restaurant or a Japanese restaurant?</div>
+            <div class="faq-a">Both. We've been cooking Korean food since 1990 — bibimbap, bulgogi, galbi, jjigae, doenjang jjigae — and our sushi and sashimi have been on the menu for decades. Most people come in for one side and end up ordering from both.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I order sushi and Korean food at the same table?</div>
+            <div class="faq-a">Absolutely — that's kind of our thing. Many of our regulars mix a sushi platter with a bowl of galbi tang or a plate of bulgogi. Everything comes out together.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is the KFC on the menu actually Korean fried chicken?</div>
+            <div class="faq-a">Yes. Double-fried until it's shatteringly crisp, then tossed in your choice of sauce. It's one of our most-ordered dishes, and for good reason.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What are your most popular dishes?</div>
+            <div class="faq-a">Beef bulgogi, galbi, bibimbap, galbi tang, and the chef's sushi platter are the dishes we've been sending out every single day for years. If you're new, start there.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do you have vegetarian options?</div>
+            <div class="faq-a">Yes. Bibimbap can be made vegetarian, doenjang jjigae is available without meat, and we have several veggie-forward banchan sides. Let your server know and we'll point you in the right direction.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How spicy is the food?</div>
+            <div class="faq-a">Most dishes aren't aggressively hot by default — we cook for a wide range of people. Kimchi jjigae has a kick. If you want things hotter or milder, just ask.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do you serve lunch?</div>
+            <div class="faq-a">Yes — Tuesday through Saturday, 11:30 to 14:30. The full menu is available at lunch, not a reduced version. Sunday is all-day service from 11:30 to 20:00.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I order online?</div>
+            <div class="faq-a">Yes. We use Toast for online ordering — the link is at the top of this page and in the footer. You can order pickup or call ahead for takeout as well.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What's the difference between the sashimi and the sushi platter?</div>
+            <div class="faq-a">Sashimi is sliced fish only — no rice. The sushi platter includes both nigiri (fish on rice) and rolls. The chef's platter is our flagship: a selection chosen daily based on what came in fresh.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do you accommodate gluten-free diners?</div>
+            <div class="faq-a">Some of our dishes are naturally gluten-free, but soy sauce is used across the kitchen. Please let your server know about any allergies and we'll do our best to accommodate you safely.</div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -624,10 +846,63 @@ const categories: Category[] = [
     flex-shrink: 0;
     margin-top: 8px;
   }
+  .item-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 
   @media (max-width: 900px) {
     .menu-header-grid { grid-template-columns: 1fr; }
     .menu-layout { grid-template-columns: 1fr; }
     .menu-sidebar { position: static; margin-bottom: 32px; }
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:nth-child(odd) {
+    padding-right: 48px;
+    border-right: 1px solid var(--line);
+  }
+  .faq-item:nth-child(even) {
+    padding-left: 48px;
+  }
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .faq-a {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 700px) {
+    .faq-list {
+      grid-template-columns: 1fr;
+    }
+    .faq-item:nth-child(odd) {
+      padding-right: 0;
+      border-right: none;
+    }
+    .faq-item:nth-child(even) {
+      padding-left: 0;
+    }
   }
 </style>

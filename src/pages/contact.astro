@@ -2,9 +2,93 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': 'https://sushikim2.com/contact#webpage',
+  name: 'Contact & Location — Sushi Kim 2',
+  url: 'https://sushikim2.com/contact',
+  description:
+    'Find Sushi Kim 2 at 110 Smithfield St in Downtown Pittsburgh. Get directions, hours, phone number, and send us a message.',
+  isPartOf: { '@id': 'https://sushikim2.com/#website' },
+  about: { '@id': 'https://sushikim2.com/#restaurant' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://sushikim2.com/contact#faq',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Where is Sushi Kim 2 located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sushi Kim 2 is located at 110 Smithfield Street in Downtown Pittsburgh, PA 15222 — one block from Market Square. The easiest landmark is the First Avenue T station, which puts you right at our door.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the hours at Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sushi Kim 2 is open Tuesday through Friday for lunch (11:30 AM – 2:30 PM) and dinner (4:30 PM – 9:00 PM), Saturday from 11:30 AM – 9:00 PM, and Sunday from 11:30 AM – 8:00 PM. Closed on Mondays.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Sushi Kim 2 require a reservation?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Walk-ins are always welcome at Sushi Kim 2, but reservations are recommended — especially on weekends and Friday evenings. You can book online at sushikim2.com/reservations or call 412-600-1000. For parties of 6 or more, please call ahead so we can set the long table.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Sushi Kim 2 offer takeout?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes — Sushi Kim 2 offers takeout. You can order online through Toast or call us directly at 412-600-1000. Everything on our menu is available for takeout, including sushi and soups.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How close is Sushi Kim 2 to Market Square?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sushi Kim 2 is one block from Market Square, on Smithfield Street. If you are standing in Market Square facing Fifth Avenue, walk toward the T station and you will see us.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Sushi Kim 2 Korean food or Japanese food?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sushi Kim 2 serves both Korean and Japanese food. We have been serving Korean home cooking — bibimbap, bulgogi, galbi, jjigae — since 1990, and our sushi bar has been part of the menu for decades.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is there parking near Sushi Kim 2?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'There is metered street parking on Smithfield Street and several garages within a short walk, including the First Avenue Garage and the Fort Pitt Garage. The T (First Avenue station) is the easiest option if you are coming from the North Shore or the suburbs.',
+      },
+    },
+  ],
+};
 ---
 
-<Layout title="Contact — Sushi Kim 2 · Downtown Pittsburgh">
+<Layout
+  title="Contact & Location — Sushi Kim 2 · Downtown Pittsburgh"
+  description="Find Sushi Kim 2 at 110 Smithfield St, Downtown Pittsburgh. Hours, directions, phone, and contact form."
+  canonicalPath="/contact"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
   <Nav />
 
   <main class="page">
@@ -106,7 +190,14 @@ import Footer from '../components/Footer.astro';
                   rel="noopener noreferrer"
                   class="btn btn-ghost"
                   style="margin-top: 8px; font-size: 11px; padding: 10px 18px;"
-                >Open in Maps</a>
+                >Open in Apple Maps</a>
+                <a
+                  href="https://www.google.com/maps/dir//110+Smithfield+St,+Pittsburgh,+PA+15222/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8834f150fccd7157:0x7959904ac24997ef?sa=X&ved=1t:707&ictx=111"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                  style="margin-top: 8px; font-size: 11px; padding: 10px 18px;"
+                >Open in Google Maps</a>
               </div>
             </div>
 
@@ -143,6 +234,56 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="px-pad" style="padding-top: 80px; padding-bottom: 100px; border-top: 1px solid var(--line);">
+      <div class="max-w-site mx-auto">
+
+        <p class="eyebrow" style="margin-bottom: 20px;">Frequently Asked Questions</p>
+        <h2 class="display" style="margin-bottom: 60px; max-width: 22ch;">
+          Common questions <span class="it">answered.</span>
+        </h2>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <div class="faq-q">Where are you located?</div>
+            <div class="faq-a">We're at 110 Smithfield Street in Downtown Pittsburgh — one block from Market Square. The easiest landmark is the First Avenue T station, which puts you right at our door.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What are your hours?</div>
+            <div class="faq-a">We're open Tuesday through Friday for lunch (11:30–14:30) and dinner (16:30–21:00), Saturday from 11:30–21:00, and Sunday from 11:30–20:00. We're closed on Mondays.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I need a reservation?</div>
+            <div class="faq-a">Walk-ins are always welcome, but reservations are recommended — especially on weekends and Friday evenings. You can book online or call us at 412-600-1000. For parties of 6 or more, please call ahead so we can set the long table.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do you offer takeout?</div>
+            <div class="faq-a">Yes — you can order online through Toast or call us directly. Everything on our menu is available for takeout, including sushi and soups.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How close are you to Market Square?</div>
+            <div class="faq-a">One block. We're on Smithfield Street — if you're standing in Market Square facing Fifth Avenue, walk toward the T station and you'll see us.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is it Korean food, Japanese food, or both?</div>
+            <div class="faq-a">Both. We've been serving Korean home cooking — bibimbap, bulgogi, galbi, jjigae — since 1990, and our sushi bar has been part of the menu for decades. Most people come for one and stay for the other.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is there parking nearby?</div>
+            <div class="faq-a">There's metered street parking on Smithfield Street and several garages within a short walk — including the First Avenue Garage and the Fort Pitt Garage. The T (First Avenue station) is the easiest option if you're coming from the North Shore or the suburbs.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <Footer />
@@ -152,6 +293,50 @@ import Footer from '../components/Footer.astro';
   @media (max-width: 900px) {
     div[style*="grid-template-columns: 1fr 1fr"] {
       grid-template-columns: 1fr !important;
+    }
+  }
+
+  .faq-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:nth-child(odd) {
+    padding-right: 48px;
+    border-right: 1px solid var(--line);
+  }
+  .faq-item:nth-child(even) {
+    padding-left: 48px;
+  }
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .faq-a {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 700px) {
+    .faq-list {
+      grid-template-columns: 1fr;
+    }
+    .faq-item:nth-child(odd) {
+      padding-right: 0;
+      border-right: none;
+    }
+    .faq-item:nth-child(even) {
+      padding-left: 0;
     }
   }
 </style>

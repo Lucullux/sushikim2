@@ -3,9 +3,36 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Marquee from '../components/Marquee.astro';
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://sushikim2.com/#webpage',
+  name: 'Sushi Kim 2 — Authentic Korean Food & Sushi · Downtown Pittsburgh',
+  url: 'https://sushikim2.com',
+  description:
+    'A 30+ year Pittsburgh institution serving authentic Korean home cooking and premium Japanese sushi at 110 Smithfield St, Downtown Pittsburgh. Open Tuesday–Sunday.',
+  isPartOf: { '@id': 'https://sushikim2.com/#website' },
+  about: { '@id': 'https://sushikim2.com/#restaurant' },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://sushikim2.com/images/real-bulgogi.jpg',
+  },
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.hero-intro', '.story-intro'],
+  },
+};
 ---
 
-<Layout>
+<Layout
+  title="Sushi Kim 2 — Authentic Korean Food & Sushi · Downtown Pittsburgh"
+  description="A 30+ year Pittsburgh institution serving authentic Korean home cooking and premium Japanese sushi at 110 Smithfield St, Downtown Pittsburgh."
+  canonicalPath=""
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  </Fragment>
   <Nav />
 
   <main class="page">
@@ -94,8 +121,16 @@ import Marquee from '../components/Marquee.astro';
       'Korean Soul Food',
     ]} />
 
+<section class="px-pad" style="padding-top: 60px; padding-bottom: 0px;">
+      <div class="max-w-site mx-auto">
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px;">
+          <div>
+    <p>Sushi Kim 2 is a family-run Korean restaurant and sushi bar in Downtown Pittsburgh, serving bulgogi, galbi, jjigae, bibimbap, sushi, sashimi, and Korean fried chicken at 110 Smithfield St.</p>
+    </div></div></div></section>
+
     <!-- ===== SIGNATURE DISHES ===== -->
-    <section class="px-pad" style="padding-top: 120px; padding-bottom: 120px;">
+    <section class="px-pad" style="padding-top: 0px; padding-bottom: 120px;">
       <div class="max-w-site mx-auto">
 
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px;">
@@ -210,7 +245,7 @@ import Marquee from '../components/Marquee.astro';
           <p class="eyebrow" style="margin-bottom: 20px;">What Pittsburgh Is Saying</p>
           <h2 class="display" style="max-width: 18ch; margin: 0 auto;">
             <span style="color: var(--red);">4.8 ★</span> across
-            <span class="it"> 200+ reviews.</span>
+            <span class="it"> 300+ reviews.</span>
           </h2>
         </div>
 

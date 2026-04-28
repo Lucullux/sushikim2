@@ -17,9 +17,55 @@ const timeline = [
   { year: '2023', title: '4.8 stars, 200+ reviews', body: 'Pittsburgh keeps coming back. We try to earn it every day.' },
   { year: '2026', title: '30+ years and counting', body: 'Still family-run. Still cooking slow. Still at 110 Smithfield.' },
 ];
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': 'https://sushikim2.com/about#webpage',
+  name: 'Our Story — Sushi Kim 2',
+  url: 'https://sushikim2.com/about',
+  description:
+    "The story of Sushi Kim 2 — a family-run Korean and Japanese restaurant in Downtown Pittsburgh open since 1990. From the Strip District to 110 Smithfield Street, over 30 years of authentic Korean cooking and fresh sushi.",
+  isPartOf: { '@id': 'https://sushikim2.com/#website' },
+  about: { '@id': 'https://sushikim2.com/#restaurant' },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://sushikim2.com/images/mr-kim.webp',
+    caption: 'Mr. Kim, founder of Sushi Kim',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://sushikim2.com/#organization',
+  name: 'Sushi Kim 2',
+  url: 'https://sushikim2.com',
+  foundingDate: '1990',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Strip District, Pittsburgh, PA',
+  },
+  description:
+    'Family-run Korean and Japanese restaurant founded in 1990 in Pittsburgh\'s Strip District. Now located at 110 Smithfield St in Downtown Pittsburgh.',
+  numberOfEmployees: {
+    '@type': 'QuantitativeValue',
+    minValue: 5,
+    maxValue: 25,
+  },
+};
 ---
 
-<Layout title="Our Story — Sushi Kim 2 · Downtown Pittsburgh">
+<Layout
+  title="Our Story — Sushi Kim 2 · Downtown Pittsburgh"
+  description="The story of Sushi Kim 2 — a family-run Korean and sushi restaurant in Downtown Pittsburgh, open since 1990. From the Strip District to 110 Smithfield Street."
+  canonicalPath="/about"
+  ogImage="/images/mr-kim.webp"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </Fragment>
   <Nav />
 
   <main class="page">

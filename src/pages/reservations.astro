@@ -2,9 +2,36 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const reservationPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://sushikim2.com/reservations#webpage',
+  name: 'Reserve a Table — Sushi Kim 2',
+  url: 'https://sushikim2.com/reservations',
+  description:
+    'Reserve a table at Sushi Kim 2, 110 Smithfield St, Downtown Pittsburgh. Online reservations for lunch and dinner, Tuesday through Sunday.',
+  isPartOf: { '@id': 'https://sushikim2.com/#website' },
+  about: { '@id': 'https://sushikim2.com/#restaurant' },
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: 'https://sushikim2.com/reservations',
+    result: {
+      '@type': 'Reservation',
+      name: 'Table reservation at Sushi Kim 2',
+    },
+  },
+};
 ---
 
-<Layout title="Reservations — Sushi Kim 2 · Downtown Pittsburgh">
+<Layout
+  title="Reserve a Table — Sushi Kim 2 · Downtown Pittsburgh"
+  description="Reserve a table at Sushi Kim 2 in Downtown Pittsburgh. Online reservations for lunch and dinner Tuesday–Sunday at 110 Smithfield St."
+  canonicalPath="/reservations"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(reservationPageSchema)} />
+  </Fragment>
   <Nav />
 
   <main class="page">

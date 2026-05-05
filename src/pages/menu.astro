@@ -21,6 +21,8 @@ interface Category {
   items: MenuItem[];
 }
 
+
+
 const categories: Category[] = [
   {
     id: 'featured',
@@ -28,8 +30,11 @@ const categories: Category[] = [
     ko: '추천',
     blurb: "The dishes our regulars order by name. Start here if it's your first visit.",
     items: [
+      { en: 'Sushi Platter - 12 or 24 pieces', code: "", price: '$21.95/34.95', description: 'A chef\'s selection of 12 pieces of assorted sushi, featuring fresh cuts over seasoned rice.', tags: ['signature'] },
+      { en: 'Galba Gui', code: 'D2', price: '$27.95', description: 'Tender beef short ribs marinated in a rich Korean BBQ sauce, grilled for a smoky, caramelized finish.', tags: ['signature'] },
       { en: 'Chicken Bulgogi', code: 'D3', price: '$20.95', description: 'Boneless chicken marinated in a savory spicy sauce, stir-fried with vegetables.', tags: ['signature'] },
       { en: 'Shumai', code: 'A5', price: '$7.50', description: '6pc of steamed shrimp dumplings.', tags: ['signature'] },
+      { en: 'Kimchi Jjigae', code: 'T4', price: '$19.95', description: 'Aged kimchi stew simmered with pork, tofu, and vegetables — bold, spicy, and deeply flavorful.', tags: ['signature'] },
     ],
   },
   {

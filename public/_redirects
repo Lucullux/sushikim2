@@ -1,0 +1,8 @@
+/order    https://order.toasttab.com/online/sushi-kim-2    301
+/order/*    /menu    301
+/menu/group_*    /menu    301
+/email-marketing    /    404
+/gallery    /    404
+/gift-cards    /    404
+/privacy-policy    /    404
+/rewards    /    404

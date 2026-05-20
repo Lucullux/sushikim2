@@ -1,4 +1,14 @@
 ---
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/noto-serif-kr/400.css';
+import '@fontsource/noto-serif-kr/500.css';
+import '@fontsource/noto-serif-kr/600.css';
+
 import '../styles/global.css';
 
 export interface Props {
@@ -171,12 +181,6 @@ const websiteSchema = {
     <meta name="ICBM" content="40.4409, -79.9998" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@400;500;600&display=swap"
-    />
 
     <!-- Global structured data: Restaurant + WebSite -->
     <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />

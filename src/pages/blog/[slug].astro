@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, pubDate, image, imageAlt } = post.data;
+
+const dateLabel = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+});
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  image: `https://sushikim2.com${image}`,
+  mainEntityOfPage: `https://sushikim2.com/blog/${post.slug}`,
+  author: { '@id': 'https://sushikim2.com/#organization' },
+  publisher: { '@id': 'https://sushikim2.com/#restaurant' },
+};
+---
+
+<Layout title={`${title} — Sushi Kim 2`} description={description} canonicalPath={`/blog/${post.slug}`} ogImage={image}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+  <Nav />
+  <main class="page">
+    <article class="px-pad" style="padding-top: 60px; padding-bottom: 100px;">
+      <div class="post-wrap">
+        <a href="/blog" class="eyebrow">← All posts</a>
+        <p class="eyebrow" style="margin: 32px 0 16px; color: var(--ink-mute);">{dateLabel}</p>
+        <h1 class="display" style="font-size: clamp(38px, 5vw, 68px); margin-bottom: 40px;">{title}</h1>
+        <div class="post-hero"><img src={image} alt={imageAlt} /></div>
+        <div class="prose"><Content /></div>
+      </div>
+    </article>
+
+    <section style="padding: 80px var(--pad); background: var(--red); color: var(--cream); text-align: center;">
+      <h2 class="display" style="color: var(--cream); max-width: 24ch; margin: 0 auto 28px;">
+        Hungry? <span class="it" style="color: var(--gold-soft);">Come eat with us.</span>
+      </h2>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="/reservations" class="btn btn-outline-cream">Reserve <span class="arr">→</span></a>
+        <a href="/menu" class="btn btn-cream-on-red">View Menu</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  .post-wrap { max-width: 760px; margin: 0 auto; }
+  .post-hero { aspect-ratio: 16/10; overflow: hidden; margin-bottom: 48px; }
+  .post-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .prose { font-size: 18px; line-height: 1.75; color: var(--ink-soft); }
+  .prose p { margin-bottom: 1.4em; }
+  .prose h2 { font-family: var(--serif); font-size: 36px; line-height: 1.15; color: var(--ink); margin: 2em 0 0.6em; font-weight: 500; }
+  .prose ul { margin: 0 0 1.4em 1.2em; list-style: disc; }
+  .prose li { margin-bottom: 0.6em; }
+  .prose a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+</style>

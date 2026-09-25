@@ -9,6 +9,7 @@ Sushi Kim 2 is located at 110 Smithfield St, Pittsburgh, PA 15222, near Market S
 - [Home](https://sushikim2.com/): Overview of Sushi Kim 2, including Korean food, sushi, restaurant history, location, and main calls to action.
 - [Menu](https://sushikim2.com/menu/): Full menu with Korean dishes, sushi, sashimi, specialty rolls, Korean fried chicken, soups, stews, bowls, appetizers, beverages, and à la carte options.
 - [About](https://sushikim2.com/about/): Background on Sushi Kim 2, including the restaurant’s Korean food tradition, Pittsburgh history, and move to Downtown Pittsburgh.
+- [Blog](https://sushikim2.com/blog/): Stories and Korean food notes from the Sushi Kim 2 kitchen.
 - [Reservations](https://sushikim2.com/reservations/): Reservation request information for lunch, dinner, and larger parties.
 - [Contact](https://sushikim2.com/contact/): Address, phone number, hours, directions, parking information, and contact details.
 

@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+
+<Layout
+  title="Blog — Sushi Kim 2 · Downtown Pittsburgh"
+  description="Stories, dishes, and Korean food notes from Sushi Kim 2, a family-run Korean and sushi restaurant in Downtown Pittsburgh since 1990."
+  canonicalPath="/blog"
+>
+  <Nav />
+  <main class="page">
+    <section class="px-pad" style="padding-top: 60px; padding-bottom: 60px;">
+      <div class="max-w-site mx-auto">
+        <p class="eyebrow" style="margin-bottom: 20px;">The Blog</p>
+        <h1 class="display" style="max-width: 20ch;">
+          From the kitchen <span class="it">at Sushi Kim 2.</span>
+        </h1>
+      </div>
+    </section>
+
+    <section class="px-pad" style="padding-bottom: 120px;">
+      <div class="max-w-site mx-auto post-grid">
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}`} class="post-card">
+            <div class="post-img">
+              <img src={post.data.image} alt={post.data.imageAlt} loading="lazy" />
+            </div>
+            <p class="eyebrow" style="margin: 20px 0 10px;">{fmt(post.data.pubDate)}</p>
+            <h2 style="font-family: var(--serif); font-size: 30px; line-height: 1.15; color: var(--ink); margin-bottom: 10px;">{post.data.title}</h2>
+            <p class="body">{post.data.description}</p>
+            <p class="eyebrow" style="margin-top: 14px;">Read more →</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+  .post-card { display: block; text-decoration: none; }
+  .post-img { aspect-ratio: 4/3; overflow: hidden; }
+  .post-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .post-card:hover .post-img img { transform: scale(1.04); }
+  @media (max-width: 900px) { .post-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .post-grid { grid-template-columns: 1fr; } }
+</style>
